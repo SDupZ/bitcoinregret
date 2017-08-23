@@ -4,7 +4,9 @@ class AmountField extends Component {
   render() {
     const {amountToday} = this.props
     return (
-      <p>You would have <h1>${amountToday}</h1></p>
+      <div>
+        <p>You would have</p><h1>${amountToday}</h1>
+      </div>
     )
   }
 }

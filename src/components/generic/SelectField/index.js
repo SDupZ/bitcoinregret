@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import InputField from './InputField'
+import SelectField from './SelectField'
 
 const mapStateToProps = (state, ownProps) => ({
   value: state[ownProps.val]
@@ -9,4 +9,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   handleValueChange: value => dispatch(ownProps.handleValueChange(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputField)
+export default connect(mapStateToProps, mapDispatchToProps)(SelectField)

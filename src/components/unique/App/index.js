@@ -3,7 +3,10 @@ import logo from './btc-logo.svg';
 import './App.css';
 
 import InputField from '../../generic/InputField';
+import SelectField from '../../generic/SelectField';
 import AmountField from '../../unique/AmountField';
+
+import {updateAmount, timeValueUpdated, timeUnitUpdated} from '../../../ducks/value'
 
 class App extends Component {
   render() {
@@ -15,7 +18,11 @@ class App extends Component {
         </div>
         <p className="App-intro">Feelsbadman</p>
         <div className="Todo-App">
-            <InputField />
+            If you have invested
+            <InputField handleValueChange={updateAmount} val='initialInvestment'/>            
+            <InputField handleValueChange={timeValueUpdated} val='timeValue' />
+            <SelectField handleValueChange={timeUnitUpdated} val="timeUnit"/>
+            ago
             <AmountField />
           </div>
       </div>

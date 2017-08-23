@@ -3,17 +3,16 @@ import React, {Component} from 'react'
 class InputField extends Component {
   handleInputChange = (evt) => {
     const val = evt.target.value
-    this.props.updateAmount(val)
+    this.props.handleValueChange(val)
   }
 
   render() {
-    const {initialInvestment} = this.props
+    const {value} = this.props
+
     return (
-      <form>
-        <input type="text"
-          onChange={this.handleInputChange}
-          value={initialInvestment}/>
-      </form>
+      <input type="text"
+        onChange={this.handleInputChange}
+        value={value}/>
     )
   }
 }
