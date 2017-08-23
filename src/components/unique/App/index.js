@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import logo from './btc-logo.svg';
 import './App.css';
+import {connect} from 'react-redux'
 
 import InputField from '../../generic/InputField';
 import SelectField from '../../generic/SelectField';
 import AmountField from '../../unique/AmountField';
 
-import {updateAmount, timeValueUpdated, timeUnitUpdated} from '../../../ducks/value'
+import {updateAmount, timeValueUpdated, timeUnitUpdated, fetchCurrentExchangeRate} from '../../../ducks/value'
 
 class App extends Component {
-  render() {
+  componentDidMount() {
+      this.props.fetchCurrentExchangeRate()
+    }
+
+  render() {   
     return (
       <div className="App">
         <div className="App-header">
@@ -30,4 +35,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect((state) => ({}),
+  {fetchCurrentExchangeRate}
+)(App)
