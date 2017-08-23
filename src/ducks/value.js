@@ -3,12 +3,13 @@ import moment from 'moment'
 
 // Initial State
 const initState = {
-    initialInvestment: 1,
-    amountToday: 1000,
+    initialInvestment: 10,
+    amountToday: 0,
     currentExchangeRate: 0,
-    exchangeRate: 10,
-    timeValue: 10,
-    timeUnit: 'day'
+    exchangeRate: 0,
+    timeValue: 1,
+    timeUnit: 'day',
+    percentageDifference: 0
 }
 
 // Actions
@@ -33,6 +34,7 @@ export const fetchCurrentExchangeRate = () => {
   return (dispatch) => {
     fetchPrice(moment().add(-1, 'day'))
         .then(res => {
+            dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
             dispatch(updateCurrentExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
         })
   }
@@ -59,15 +61,18 @@ export default(state = initState, action) => {
     switch(action.type) {
         case UPDATE_AMOUNT: {
             const newAmount = action.payload * (1 / state.exchangeRate) * state.currentExchangeRate
-            return {...state, initialInvestment: action.payload, amountToday: newAmount}
+            const percentage = ((newAmount - action.payload) / action.payload) * 100
+            return {...state, initialInvestment: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_EXCHANGE_RATE: {
             const newAmount = state.initialInvestment * (1 / action.payload) * state.currentExchangeRate
-            return {...state, exchangeRate: action.payload, amountToday: newAmount}
+            const percentage = ((newAmount - state.initialInvestment) / state.initialInvestment) * 100
+            return {...state, exchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_CURRENT_EXCHANGE_RATE: {
             const newAmount = state.initialInvestment * (1 / state.exchangeRate) * action.payload
-            return {...state, currentExchangeRate: action.payload, amountToday: newAmount}
+            const percentage = ((newAmount - state.initialInvestment) / state.initialInvestment) * 100
+            return {...state, currentExchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_TIME_VALUE: {
             return {...state, timeValue: action.payload}
