@@ -3,12 +3,12 @@ import logo from './btc-logo.svg';
 import './styles.css';
 import {connect} from 'react-redux'
 
-import InputField from '../../generic/InputField';
-import SelectField from '../../generic/SelectField';
 import AmountField from '../../unique/AmountField';
+import InitialInvestment from '../../unique/InitialInvestment';
+import TimeAgo from '../../unique/TimeAgo';
 import AppLoading from '../../unique/meta/AppLoading';
 
-import {updateAmount, timeValueUpdated, timeUnitUpdated, fetchCurrentExchangeRate} from '../../../ducks/value'
+import {fetchCurrentExchangeRate} from '../../../ducks/value'
 
 class App extends Component {
   componentDidMount() {
@@ -24,11 +24,10 @@ class App extends Component {
           <h2>Bitcoin Regret</h2>
         </div>        
         <div>
-            If you had invested
-            <InputField handleValueChange={updateAmount} value={(state) => state.value.initialInvestment}/>            
-            <InputField handleValueChange={timeValueUpdated} value={(state) => state.value.timeValue} />
-            <SelectField handleValueChange={timeUnitUpdated} value={(state) => state.value.timeUnit} />
-            ago
+            <InitialInvestment />
+            <TimeAgo />   
+                   
+            <div>is now worth: </div>
             <AmountField />
           </div>
       </div>

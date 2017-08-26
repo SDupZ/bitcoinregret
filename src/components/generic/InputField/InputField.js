@@ -1,18 +1,30 @@
 import React, {Component} from 'react'
+import './styles.css'
 
 class InputField extends Component {
+
   handleInputChange = (evt) => {
-    const val = evt.target.value
+    const val = parseInt(evt.target.innerText, 10)
     this.props.handleValueChange(val)
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
   }
 
   render() {
     const {value} = this.props
 
     return (
-      <input type="text"
-        onChange={this.handleInputChange}
-        value={value}/>
+      <span
+        contentEditable={true}
+        onInput={this.handleInputChange}
+        onBlur={this.handleInputChange}
+        value={value}
+        className='inputField'>
+        
+        {value}
+        </span>
     )
   }
 }
