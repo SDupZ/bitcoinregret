@@ -1,7 +1,27 @@
 .greenText {
-    color: green;
+    color: #0adc00;
 }
 
 .redText {
-    color: red;
+    color: #dc0000;
+}
+
+.amountWrapper {
+    color: white;
+    margin: 40px;
+}
+
+.amountToday {
+    font-size: 90px;
+}
+
+.btcAmount {
+    position: absolute;
+    transform: translateX(-100%);
+}
+
+.percentageIncrease {
+    display: block;
+    text-align: center;
+    font-size: 40px;
 }

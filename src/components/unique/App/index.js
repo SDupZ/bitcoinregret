@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './btc-logo.svg';
-import './App.css';
+import './styles.css';
 import {connect} from 'react-redux'
 
 import InputField from '../../generic/InputField';
@@ -23,9 +23,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Bitcoin Regret</h2>
         </div>        
-        <p className="App-intro">Feelsbadman</p>
-        <div className="Todo-App">
-            If you have invested
+        <div>
+            If you had invested
             <InputField handleValueChange={updateAmount} value={(state) => state.value.initialInvestment}/>            
             <InputField handleValueChange={timeValueUpdated} value={(state) => state.value.timeValue} />
             <SelectField handleValueChange={timeUnitUpdated} value={(state) => state.value.timeUnit} />
