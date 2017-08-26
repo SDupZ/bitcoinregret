@@ -1,0 +1,25 @@
+.loader {
+    height: 4px;
+    background-color: #17E8FF;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+}
+
+.loaderInner {
+    height: 100%;
+    background-color: #FEFF07;
+    width: 20%;
+    position: absolute;
+
+    animation: load 1.5s infinite;
+}
+
+@keyframes load {
+    0% {
+        left: 0
+    }
+    100% {
+        left: 100%;
+    }
+}

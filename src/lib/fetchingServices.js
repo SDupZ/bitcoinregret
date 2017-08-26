@@ -5,3 +5,10 @@ export const fetchPrice = (date) => {
     return fetch(PRICE_URL)
         .then(res => res.json())
 }
+
+export const fetchCurrentPrice = () => {
+    const PRICE_URL = `https://api.coindesk.com/v1/bpi/currentprice.json`
+    return fetch(PRICE_URL)
+        .then(res => res.json())
+}
+

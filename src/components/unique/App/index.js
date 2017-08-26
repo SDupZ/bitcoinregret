@@ -18,11 +18,11 @@ class App extends Component {
   render() {   
     return (
       <div className="App">
+        <AppLoading />
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Bitcoin Regret</h2>
-        </div>
-        <AppLoading />
+        </div>        
         <p className="App-intro">Feelsbadman</p>
         <div className="Todo-App">
             If you have invested

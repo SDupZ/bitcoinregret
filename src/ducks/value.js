@@ -1,4 +1,4 @@
-import {fetchPrice} from '../lib/fetchingServices'
+import {fetchPrice, fetchCurrentPrice} from '../lib/fetchingServices'
 import {updateLoading} from './meta'
 import moment from 'moment'
 
@@ -34,10 +34,10 @@ export const updateTimeUnit = (val) => ({type: UPDATE_TIME_UNIT, payload: val})
 export const fetchCurrentExchangeRate = () => {
   return (dispatch) => {
     dispatch(updateLoading(true))
-    fetchPrice(moment().add(-1, 'day'))
+    fetchCurrentPrice()
         .then(res => {
-            dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
-            dispatch(updateCurrentExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
+            dispatch(updateExchangeRate(res.bpi.USD.rate_float))
+            dispatch(updateCurrentExchangeRate(res.bpi.USD.rate_float))
         })
   }
 }
@@ -66,6 +66,7 @@ export default(state = initState, action) => {
         case UPDATE_AMOUNT: {
             const newAmount = action.payload * (1 / state.exchangeRate) * state.currentExchangeRate
             const percentage = ((newAmount - action.payload) / action.payload) * 100
+            console.log(newAmount);
             return {...state, initialInvestment: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_EXCHANGE_RATE: {

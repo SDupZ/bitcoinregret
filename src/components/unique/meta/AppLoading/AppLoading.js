@@ -7,7 +7,7 @@ class AppLoading extends Component {
     
     let loader = null;
     if (loading) {
-      loader = <h1>App Loading</h1>
+      loader = <div className="loader"><div className="loaderInner"/></div>
     }
 
     return (
