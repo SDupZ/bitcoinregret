@@ -1,4 +1,5 @@
 import {fetchPrice} from '../lib/fetchingServices'
+import {updateLoading} from './meta'
 import moment from 'moment'
 
 // Initial State
@@ -14,7 +15,7 @@ const initState = {
 
 // Actions
 const UPDATE_AMOUNT = 'value/UPDATE_AMOUNT'
-const UPDATE_EXCHANGE_RATE = 'value/UPDATE_EXCHANGE_RATE'
+export const UPDATE_EXCHANGE_RATE = 'value/UPDATE_EXCHANGE_RATE'
 const UPDATE_CURRENT_EXCHANGE_RATE = 'value/UPDATE_CURRENT_EXCHANGE_RATE'
 const UPDATE_TIME_VALUE = 'value/UPDATE_TIME_VALUE'
 const UPDATE_TIME_UNIT = 'value/UPDATE_TIME_UNIT'
@@ -32,6 +33,7 @@ export const updateTimeUnit = (val) => ({type: UPDATE_TIME_UNIT, payload: val})
 // Thunks
 export const fetchCurrentExchangeRate = () => {
   return (dispatch) => {
+    dispatch(updateLoading(true))
     fetchPrice(moment().add(-1, 'day'))
         .then(res => {
             dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
@@ -41,14 +43,16 @@ export const fetchCurrentExchangeRate = () => {
 }
 export const timeValueUpdated = (val) => (dispatch, getState) => {
     dispatch(updateTimeValue(val))
-    fetchPrice(moment().add(-val, getState().timeUnit))
+    dispatch(updateLoading(true))
+    fetchPrice(moment().add(-val, getState().value.timeUnit))
         .then(res => {
             dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
         })
 }
 export const timeUnitUpdated = (val) => (dispatch, getState) => {
     dispatch(updateTimeUnit(val))
-    fetchPrice(moment().add(-getState().timeValue, val))
+    dispatch(updateLoading(true))
+    fetchPrice(moment().add(-getState().value.timeValue, val))
         .then(res => {
             dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
         })

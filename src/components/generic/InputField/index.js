@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import InputField from './InputField'
 
 const mapStateToProps = (state, ownProps) => ({
-  value: state[ownProps.val]
+  value: ownProps.value(state)
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
