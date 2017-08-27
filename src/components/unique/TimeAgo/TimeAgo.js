@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import './styles.css'
 
 import InputField from '../../generic/InputField';
-import SelectField from '../../generic/SelectField';
-import DateField from '../../unique/DateField';
-
-import {timeValueUpdated, timeUnitUpdated} from '../../../ducks/value'
+import {timeValueUpdated} from '../../../ducks/value'
 
 class TimeAgo extends Component {
   render() {

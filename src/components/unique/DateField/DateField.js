@@ -1,23 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './styles.css';
-import {MdDateRange} from 'react-icons/lib/md';
 
-import InputField from '../../generic/InputField';
-import SelectField from '../../generic/SelectField';
-import {timeValueUpdated, timeUnitUpdated} from '../../../ducks/value'
 
-class DateField extends Component {
-  render() {
-    return (
-      <div className="dateFieldWrapper">
-        <div className="input">
-          <span className='day'>12</span>    
-          <span className='month'>August</span>
-          <div className='year'>2016</div>  
-        </div>     
-      </div>
-    )
-  }
+function DateField(props) {
+  const {day, month, year} = props    
+
+  return (
+    <div className="dateFieldWrapper">
+      <div className="input">
+        <span className='day'>{day}</span>    
+        <span className='month'>{month}</span>
+        <div className='year'>{year}</div>  
+      </div>     
+    </div>
+  )
 }
 
 export default DateField
