@@ -8,6 +8,7 @@ class AmountField extends Component {
 
     return (
       <div className="amountWrapper">
+        <div>is now worth: </div>
         <span className="btcAmount">{btcAmount} BTC=</span>
         <span className="amountToday">${amountToday}</span>
         <span className="currency">USD</span>

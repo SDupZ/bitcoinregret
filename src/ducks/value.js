@@ -4,13 +4,13 @@ import moment from 'moment'
 
 // Initial State
 const initState = {
-    initialInvestment: 10,
-    amountToday: 0,
-    currentExchangeRate: 0,
-    exchangeRate: 0,
+    initialInvestment: 1000,
+    amountToday: 7713.35,
+    currentExchangeRate: 4386.3238,
+    exchangeRate: 568.6663,
     timeValue: 1,
     timeUnit: 'day',
-    percentageDifference: 0
+    percentageDifference: 671.34
 }
 
 // Actions
@@ -66,7 +66,6 @@ export default(state = initState, action) => {
         case UPDATE_AMOUNT: {
             const newAmount = (action.payload * (1 / state.exchangeRate) * state.currentExchangeRate).toFixed(2);
             const percentage = (((newAmount - action.payload) / action.payload) * 100).toFixed(2);
-            console.log(newAmount);
             return {...state, initialInvestment: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_EXCHANGE_RATE: {

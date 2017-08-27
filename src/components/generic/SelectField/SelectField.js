@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './styles.css'
 
 class SelectField extends Component {
   handleSelected = (evt) => {
@@ -9,10 +10,10 @@ class SelectField extends Component {
   render() {
     const {value} = this.props
     return (
-        <select value={value} onChange={this.handleSelected}>
-          <option value="day">Days</option>
-          <option value="month">Months</option>
-          <option value="year">Years</option>
+        <select value={value} onChange={this.handleSelected} className='selectTimeUnitWrapper'>
+          <option value="day">days</option>
+          <option value="month">months</option>
+          <option value="year">years</option>
         </select>
     )
   }

@@ -2,8 +2,10 @@
     margin: 20px;
     width: auto;
     display: inline-block;    
+    text-align: left;
 }
 
 .input {
     font-size: 32px;
+    display: inline-block;
 }
