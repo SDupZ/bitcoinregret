@@ -2,25 +2,16 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import './styles.css';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
 class DateField extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      startDate: moment(),
-      isOpen: false,
-      day: props.day,
-      month: props.month,
-      year: props.year,
-    };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(date) {
-    this.setState({ startDate: date });
-    console.log("Date changed");
+    this.props.handleValueChange(date);
   }
 
   render() {
@@ -28,9 +19,9 @@ class DateField extends React.Component {
       <div>
         <div className="dateFieldWrapper" onClick={this.toggleCalendar}>
           <div className="input">
-            <span className='day'>{this.state.day}</span>
-            <span className='month'>{this.state.month}</span>
-            <div className='year'>{this.state.year}</div>
+            <span className='day'>{this.props.day}</span>
+            <span className='month'>{this.props.month}</span>
+            <div className='year'>{this.props.year}</div>
           </div>
         </div>
       </div >
@@ -38,7 +29,6 @@ class DateField extends React.Component {
     return (
       <DatePicker
         customInput={wrapper}
-        selected={this.state.startDate}
         onChange={this.handleChange} />
     )
   }

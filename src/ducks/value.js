@@ -10,7 +10,8 @@ const initState = {
     exchangeRate: 568.6663,
     timeValue: 1,
     timeUnit: 'day',
-    percentageDifference: 671.34
+    percentageDifference: 671.34,
+    pastDateInvested: moment(),
 }
 
 // Actions
@@ -19,6 +20,7 @@ export const UPDATE_EXCHANGE_RATE = 'value/UPDATE_EXCHANGE_RATE'
 const UPDATE_CURRENT_EXCHANGE_RATE = 'value/UPDATE_CURRENT_EXCHANGE_RATE'
 const UPDATE_TIME_VALUE = 'value/UPDATE_TIME_VALUE'
 const UPDATE_TIME_UNIT = 'value/UPDATE_TIME_UNIT'
+const UPDATE_DATETIME = 'value/UPDATE_DATETIME'
 
 
 // Action Creators
@@ -27,7 +29,7 @@ export const updateExchangeRate = (val) => ({type: UPDATE_EXCHANGE_RATE, payload
 export const updateCurrentExchangeRate = (val) => ({type: UPDATE_CURRENT_EXCHANGE_RATE, payload: val})
 export const updateTimeValue = (val) => ({type: UPDATE_TIME_VALUE, payload: val})
 export const updateTimeUnit = (val) => ({type: UPDATE_TIME_UNIT, payload: val})
-
+export const updateDatetime = (val) => ({ type: UPDATE_DATETIME, payload: val })
 
 
 // Thunks
@@ -57,6 +59,15 @@ export const timeUnitUpdated = (val) => (dispatch, getState) => {
             dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
         })
 }
+export const datetimeUpdated = (val) => (dispatch, getState) => {
+    console.log("Start something else");
+    dispatch(updateDatetime(val))
+    dispatch(updateLoading(true))
+    fetchPrice(val)
+        .then(res => {
+            dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
+        })
+}
 
 
 
@@ -79,10 +90,16 @@ export default(state = initState, action) => {
             return {...state, currentExchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_TIME_VALUE: {
-            return {...state, timeValue: action.payload}
+            const newPastDate = moment().add(-action.payload, state.timeUnit)
+            return { ...state, timeValue: action.payload, pastDateInvested: newPastDate}
         }
         case UPDATE_TIME_UNIT: {
-            return {...state, timeUnit: action.payload}
+            const newPastDate = moment().add(-state.timevalue, action.payload)
+            return { ...state, timeUnit: action.payload, pastDateInvested: newPastDate}
+        }
+        case UPDATE_DATETIME: {
+            const timeVal = moment().add(-state.timevalue, state.timeUnit).diff(action.payload, state.timeUnit);
+            return { ...state, timeValue: timeVal, pastDateInvested: action.payload }
         }
         default: {
             return state;
