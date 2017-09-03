@@ -27,7 +27,7 @@ class App extends Component {
             invested
             <TimeAgo />       
             <div>on</div>
-            <DateField />              
+            <DateField />           
             <AmountField />
           </div>
       </div>
