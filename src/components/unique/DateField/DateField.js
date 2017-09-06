@@ -17,12 +17,10 @@ class DateField extends React.Component {
   render() {
     const wrapper = (
       <div>
-        <div className="dateFieldWrapper" onClick={this.toggleCalendar}>
-          <div className="input">
-            <span className='day'>{this.props.day}</span>
-            <span className='month'>{this.props.month}</span>
-            <div className='year'>{this.props.year}</div>
-          </div>
+        <div className='c-datefield__wrapper' onClick={this.toggleCalendar}>
+          <span className='c-datefield__day'>{this.props.day}</span>
+          <span className='c-datefield__month'>{this.props.month}</span>
+          <div className='c-datefield__year'>{this.props.year}</div>
         </div>
       </div >
     )

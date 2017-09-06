@@ -14,15 +14,14 @@ class App extends Component {
     this.props.fetchCurrentExchangeRate()
   }
 
-
   render() {   
     return (
-      <div className="App">
+      <div className="c-app">
         <AppLoading />
-        <div className="App-header">
+        <div className="c-header">
           <h2>Bitcoin Regret</h2>
         </div>        
-        <div>
+        <div className="c-content">
             <InitialInvestment />
             invested
             <TimeAgo />       

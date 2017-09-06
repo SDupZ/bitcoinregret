@@ -10,7 +10,7 @@ class TimeAgo extends Component {
       <div className="timeAgoWrapper">
         <div className="input">
           <InputField handleValueChange={timeValueUpdated} value={(state) => state.value.timeValue} />   
-        </div>     
+        </div> 
         <span>days ago</span>        
       </div>
     )
