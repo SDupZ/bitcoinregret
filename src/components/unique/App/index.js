@@ -22,13 +22,13 @@ class App extends Component {
           <h2>Bitcoin Regret</h2>
         </div>        
         <div className="c-content">
-            <InitialInvestment />
-            invested
-            <TimeAgo />       
-            <div>on</div>
-            <DateField />           
-            <AmountField />
-          </div>
+          <InitialInvestment />
+          invested
+          <TimeAgo />       
+          <div>on</div>
+          <DateField />           
+          <AmountField />
+        </div>
       </div>
     );
   }
