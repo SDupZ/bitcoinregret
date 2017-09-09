@@ -23,7 +23,7 @@ class DateField extends React.Component {
   }
 
   handleBlur() {
-    this.setState({ ...this.state, calendarOpen: false });
+    console.log("Test");
   }
 
   toggleCalendar() {
@@ -37,22 +37,21 @@ class DateField extends React.Component {
         this.setState({ open: nextProps.open });
       }
     };
-    const calendar =  true && (
-      <DateTime
-        open={this.state.calendarOpen}
-        onChange={this.handleChange}
-        timeFormat={false}
-        input={false}
-        closeOnSelect={true} />
-    );
     return (
       <div className=".rdtWrapper">
-        <div className='c-datefield__wrapper' onClick={this.toggleCalendar} tabIndex={1} onBlur={this.handleBlur}>
+        <div className='c-datefield__wrapper' onClick={this.toggleCalendar}>
           <span className='c-datefield__day'>{this.props.day}</span>
           <span className='c-datefield__month'>{this.props.month}</span>
           <div className='c-datefield__year'>{this.props.year}</div>
         </div>
-        {calendar}
+        <DateTime
+          open={this.state.calendarOpen}
+          onChange={this.handleChange}
+          timeFormat={false}
+          input={false}
+          closeOnSelect={true} 
+          onBlur={this.handleBlur}
+          />
       </div >
     )
   }

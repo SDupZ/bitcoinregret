@@ -60,7 +60,6 @@ export const timeUnitUpdated = (val) => (dispatch, getState) => {
         })
 }
 export const datetimeUpdated = (val) => (dispatch, getState) => {
-    console.log("Start something else");
     dispatch(updateDatetime(val))
     dispatch(updateLoading(true))
     fetchPrice(val)
