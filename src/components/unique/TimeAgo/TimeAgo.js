@@ -9,7 +9,7 @@ class TimeAgo extends Component {
     return (
       <div className="timeAgoWrapper">
         <div className="input">
-          <InputField handleValueChange={timeValueUpdated} value={(state) => state.value.timeValue} />   
+          <InputField maxLength={5} handleValueChange={timeValueUpdated} value={(state) => state.value.timeValue} />   
         </div> 
         <span>days ago</span>        
       </div>

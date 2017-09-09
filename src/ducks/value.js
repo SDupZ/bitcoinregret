@@ -13,6 +13,7 @@ const initState = {
     percentageDifference: 671.34,
     pastDateInvested: moment(),
 }
+const DECIMAL_PLACES = 2;
 
 // Actions
 const UPDATE_AMOUNT = 'value/UPDATE_AMOUNT'
@@ -74,18 +75,18 @@ export const datetimeUpdated = (val) => (dispatch, getState) => {
 export default(state = initState, action) => {
     switch(action.type) {
         case UPDATE_AMOUNT: {
-            const newAmount = (action.payload * (1 / state.exchangeRate) * state.currentExchangeRate).toFixed(2);
-            const percentage = (((newAmount - action.payload) / action.payload) * 100).toFixed(2);
+            const newAmount = (action.payload * (1 / state.exchangeRate) * state.currentExchangeRate).toFixed(DECIMAL_PLACES);
+            const percentage = (((newAmount - action.payload) / action.payload) * 100).toFixed(DECIMAL_PLACES);
             return {...state, initialInvestment: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_EXCHANGE_RATE: {
-            const newAmount = (state.initialInvestment * (1 / action.payload) * state.currentExchangeRate).toFixed(2);
-            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(2);
+            const newAmount = (state.initialInvestment * (1 / action.payload) * state.currentExchangeRate).toFixed(DECIMAL_PLACES);
+            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(DECIMAL_PLACES);
             return {...state, exchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_CURRENT_EXCHANGE_RATE: {
-            const newAmount = (state.initialInvestment * (1 / state.exchangeRate) * action.payload).toFixed(2);
-            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(2);
+            const newAmount = (state.initialInvestment * (1 / state.exchangeRate) * action.payload).toFixed(DECIMAL_PLACES);
+            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(DECIMAL_PLACES);
             return {...state, currentExchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_TIME_VALUE: {
