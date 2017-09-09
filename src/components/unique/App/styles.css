@@ -21,18 +21,3 @@
   margin: 0;
   display: inline-block;
 }
-
-.rdtWrapper {
-  position: relative;
-}
-
-.rdt {
-  position: absolute !important;
-  color: black;
-  left: 0;
-  right: 0;
-}
-
-.rdtPicker {
-  margin: 0 auto;
-}
