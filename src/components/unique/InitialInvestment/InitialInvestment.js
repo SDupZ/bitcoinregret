@@ -8,7 +8,10 @@ class InitialInvestment extends Component {
   render() {
     return (
       <div className="initialInvestmentWrapper">
-        <div className="input">$<InputField handleValueChange={updateAmount} value={(state) => state.value.initialInvestment}/></div>
+        <div className="input">$<InputField 
+          handleValueChange={updateAmount} 
+          value={(state) => state.value.initialInvestment}
+          requestFocus={true}/></div>
       </div>
     )
   }

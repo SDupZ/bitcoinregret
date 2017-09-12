@@ -11,6 +11,12 @@ class InputField extends Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.requestFocus){
+      this.input.focus();
+    }
+  }
+
   handleInputChange = (evt) => {
     const val = evt.target.value;
     if (isNaN(Number(val))) {
@@ -37,7 +43,8 @@ class InputField extends Component {
           maxLength={maxLength}
           className={'inputField ' + (this.state.error ? 'error' : '')}
           size={size} 
-          style={style}/>
+          style={style}
+          ref={(input) => { this.input = input; }}/>
         <div className={"underLine " + (this.state.error ? 'error' : '')} />
       </div>
     )
