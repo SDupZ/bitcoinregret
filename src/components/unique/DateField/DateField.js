@@ -11,27 +11,27 @@ class DateField extends React.Component {
     super(props)
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
-    this.toggleCalendar = this.toggleCalendar.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+
     this.state = {
       calendarOpen: false,
     };
   }
 
   handleChange(date) {
-    this.setState({ ...this.state, calendarOpen: !this.state.calendarOpen });
+    this.dateTimeDOM.blur();
     this.props.handleValueChange(date);
   }
 
   handleBlur() {
-    console.log("Test");
+    this.setState({ ...this.state, calendarOpen: false});
   }
 
-  toggleCalendar() {
-    this.setState({...this.state, calendarOpen: !this.state.calendarOpen});
+  handleFocus() {
+    this.setState({ ...this.state, calendarOpen: true });
   }
 
   render() {
-    this.state.calendarOpen
     DateTime.prototype.componentWillReceiveProps = function (nextProps) {
       if (this.props.open !== nextProps.open) {
         this.setState({ open: nextProps.open });
@@ -39,19 +39,23 @@ class DateField extends React.Component {
     };
     return (
       <div className=".rdtWrapper">
-        <div className='c-datefield__wrapper' onClick={this.toggleCalendar}>
+        <div 
+          className='c-datefield__wrapper' 
+          tabIndex={"0"} 
+          onFocus={this.handleFocus} 
+          onBlur={this.handleBlur}
+          ref={(dateTimeDOM) => { this.dateTimeDOM = dateTimeDOM; }}
+          >
           <span className='c-datefield__day'>{this.props.day}</span>
           <span className='c-datefield__month'>{this.props.month}</span>
           <div className='c-datefield__year'>{this.props.year}</div>
-        </div>
-        <DateTime
-          open={this.state.calendarOpen}
-          onChange={this.handleChange}
-          timeFormat={false}
-          input={false}
-          closeOnSelect={true} 
-          onBlur={this.handleBlur}
+          <DateTime
+            open={this.state.calendarOpen}
+            onChange={this.handleChange}
+            timeFormat={false}
+            input={false}
           />
+        </div>
       </div >
     )
   }

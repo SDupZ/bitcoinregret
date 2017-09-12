@@ -35,7 +35,7 @@ class InputField extends Component {
           onChange={this.handleInputChange}
           value={value}
           maxLength={maxLength}
-          className='inputField'
+          className={'inputField ' + (this.state.error ? 'error' : '')}
           size={size} 
           style={style}/>
         <div className={"underLine " + (this.state.error ? 'error' : '')} />

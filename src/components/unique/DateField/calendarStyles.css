@@ -7,6 +7,9 @@
   color: black;
   left: 0;
   right: 0;
+
+  width: 340px;
+  margin: 0 auto;
 }
 
 .rdt .rdtPicker {
