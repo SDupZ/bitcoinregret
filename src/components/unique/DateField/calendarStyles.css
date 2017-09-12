@@ -14,10 +14,101 @@
 
 .rdt .rdtPicker {
   margin: 0 auto;
-  border-radius: 4px;
-  box-shadow: 10px 10px 20px 10px rgba(1,1,1,0.4) !important;
-
   width: 300px;
   padding: 15px;
+
+  background: #18232E;
+  color: #EEEEEE;
+
+  border: none;
+  border-radius: 4px;
+  box-shadow: 4px 4px 25px 5px rgba(1,1,1,0.4) !important;
+}
+
+.rdt .rdtPicker th {
+  border: none;
+}
+
+.rdt .rdtPicker td {
+  height: 40px;
+}
+
+.rdt .rdtPicker td.rdtDay:hover {
+  background: #455260;
   border-radius: 4px;
 }
+
+.rdt .rdtPicker td.rdtActive {
+  background-color: #455260;
+  border-radius: 4px;
+}
+
+/* Month picker */
+.rdt .rdtPicker .rdtMonth:hover {
+  color: #EEEEEE;
+  background-color: #455260;
+  border-radius: 4px;
+}
+
+/* Year picker */
+.rdt .rdtPicker .rdtYear:hover {
+  color: #EEEEEE;
+  background-color: #455260;
+  border-radius: 4px;
+}
+
+/* September 2017 */
+.rdt .rdtPicker .rdtSwitch {
+  color: #EEEEEE;
+}
+.rdt .rdtPicker .rdtSwitch:hover {
+  background: none;
+  background: #455260;
+  border-radius: 4px;
+}
+
+/* Arrows */
+.rdt .rdtPicker .rdtPrev {
+  color: #E91E63;
+}
+.rdt .rdtPicker .rdtPrev:hover {
+  background: none;
+  background: #455260;
+  border-radius: 4px;
+}
+.rdt .rdtPicker .rdtNext {
+  color: #E91E63;
+}
+.rdt .rdtPicker .rdtNext:hover {
+  background: none;
+  background: #455260;
+  border-radius: 4px;
+}
+
+/* Day of week - Su, Mo etc */
+.rdt .rdtPicker .dow {
+  color: #455260;
+  text-transform: lowercase;
+}
+
+/* Days before and after month */
+.rdt .rdtPicker td.rdtOld {
+  color: #272F37;
+}
+.rdt .rdtPicker td.rdtNew {
+  color: #272F37;
+}
+
+
+/* Today */
+.rdt .rdtPicker td.rdtToday {
+  color: #E91E63;
+}
+.rdt .rdtPicker td.rdtToday:before {
+  border: none;
+}
+/* 
+.rdt .rdtPicker .rdtDays table thead tr:first-child {
+  height: 55px;
+} */
+
