@@ -17,12 +17,12 @@
 }
 
 .amountToday {
-    font-size: 50px;
+     font-size: 6vw;
 }
 
 @media only screen and (min-width: 600px) {
     .amountToday {
-        font-size: 90px;
+        font-size: 6vw;
     }
 }
 
@@ -34,7 +34,7 @@
 
 @media only screen and (min-width: 600px) {
     .btcAmount {
-        transform: translateX(-100%);
+        transform: translateY(-100%);
     }
 }
 
@@ -42,10 +42,17 @@
     display: block;
     text-align: center;
     font-size: 32px;
+    margin-top: 24px;
 }
 
 @media only screen and (min-width: 600px) {
     .percentageIncrease {
         font-size: 40px;
     }
+}
+
+.currency {
+    position: absolute;
+    transform: translate(-100%, 100%);
+    bottom: 0;
 }

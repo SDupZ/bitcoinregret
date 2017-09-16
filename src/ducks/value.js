@@ -8,12 +8,11 @@ const initState = {
     amountToday: 7713.35,
     currentExchangeRate: 4386.3238,
     exchangeRate: 568.6663,
-    timeValue: 1,
+    timeValue: 0,
     timeUnit: 'day',
     percentageDifference: 671.34,
     pastDateInvested: moment(),
 }
-const DECIMAL_PLACES = 2;
 
 // Actions
 const UPDATE_AMOUNT = 'value/UPDATE_AMOUNT'
@@ -47,10 +46,17 @@ export const fetchCurrentExchangeRate = () => {
 export const timeValueUpdated = (val) => (dispatch, getState) => {
     dispatch(updateTimeValue(val))
     dispatch(updateLoading(true))
-    fetchPrice(moment().add(-val, getState().value.timeUnit))
-        .then(res => {
-            dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
-        })
+    if (Number(val) === 0) {
+        fetchCurrentPrice()
+            .then(res => {
+                dispatch(updateExchangeRate(res.bpi.USD.rate_float))
+            })
+    } else {
+        fetchPrice(moment().add(-val, getState().value.timeUnit))
+            .then(res => {
+                dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
+            })
+    }
 }
 export const timeUnitUpdated = (val) => (dispatch, getState) => {
     dispatch(updateTimeUnit(val))
@@ -63,10 +69,17 @@ export const timeUnitUpdated = (val) => (dispatch, getState) => {
 export const datetimeUpdated = (val) => (dispatch, getState) => {
     dispatch(updateDatetime(val))
     dispatch(updateLoading(true))
-    fetchPrice(val)
-        .then(res => {
-            dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
-        })
+    if (moment().diff(val, 'days') === 0){
+        fetchCurrentPrice()
+            .then(res => {
+                dispatch(updateExchangeRate(res.bpi.USD.rate_float))
+            })
+    } else {
+        fetchPrice(val)
+            .then(res => {
+                dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
+            })
+    }
 }
 
 
@@ -75,18 +88,18 @@ export const datetimeUpdated = (val) => (dispatch, getState) => {
 export default(state = initState, action) => {
     switch(action.type) {
         case UPDATE_AMOUNT: {
-            const newAmount = (action.payload * (1 / state.exchangeRate) * state.currentExchangeRate).toFixed(DECIMAL_PLACES);
-            const percentage = (((newAmount - action.payload) / action.payload) * 100).toFixed(DECIMAL_PLACES);
+            const newAmount = (action.payload * (1 / state.exchangeRate) * state.currentExchangeRate);
+            const percentage = (((newAmount - action.payload) / action.payload) * 100);
             return {...state, initialInvestment: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_EXCHANGE_RATE: {
-            const newAmount = (state.initialInvestment * (1 / action.payload) * state.currentExchangeRate).toFixed(DECIMAL_PLACES);
-            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(DECIMAL_PLACES);
+            const newAmount = (state.initialInvestment * (1 / action.payload) * state.currentExchangeRate);
+            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100);
             return {...state, exchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_CURRENT_EXCHANGE_RATE: {
-            const newAmount = (state.initialInvestment * (1 / state.exchangeRate) * action.payload).toFixed(DECIMAL_PLACES);
-            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100).toFixed(DECIMAL_PLACES);
+            const newAmount = (state.initialInvestment * (1 / state.exchangeRate) * action.payload);
+            const percentage = (((newAmount - state.initialInvestment) / state.initialInvestment) * 100);
             return {...state, currentExchangeRate: action.payload, amountToday: newAmount, percentageDifference: percentage}
         }
         case UPDATE_TIME_VALUE: {

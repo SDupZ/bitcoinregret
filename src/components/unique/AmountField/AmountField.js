@@ -9,15 +9,25 @@ function AmountField(props) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  const formatAmountToday = (x) => {
+    x = Number(Number(x).toPrecision(4)).toFixed(2);x
+    return numberWithCommas(x);
+  }
+
+  const formatTwoDecimals = (x) => {
+    x = Number(x).toFixed(2);
+    return numberWithCommas(x);
+  }
+
   return (
     <div className="amountFieldWrapper">
       <div>is now worth: </div>
       <div className="amountWrapper">
-        <span className="btcAmount">{btcAmount} BTC=</span>
-        <span className="amountToday">${numberWithCommas(amountToday)}</span>
+        <span className="btcAmount">{formatTwoDecimals(btcAmount)} BTC=</span>
+        <span className="amountToday" >${formatAmountToday(amountToday)}</span>
         <span className="currency">USD</span>
-        <span className={percentageClass}>{numberWithCommas(percentageIncrease)}%</span>
       </div>
+      <span className={percentageClass}>{formatTwoDecimals(percentageIncrease)}%</span>
     </div>
   )
 }
