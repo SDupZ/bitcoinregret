@@ -1,11 +1,19 @@
 .initialInvestmentWrapper {
-    margin: 20px;
-    width: auto;
-    display: inline-block;    
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.input {
-    font-size: 32px;
-    display: inline-block;
+@media only screen and (min-width: 600px) {
+    .initialInvestmentWrapper {
+        justify-content: flex-end;
+    }
 }
+
+.c-dollar{
+    font-size: 32px;
+    margin: 0;
+}
+
+
+

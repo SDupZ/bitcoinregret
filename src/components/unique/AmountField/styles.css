@@ -6,23 +6,46 @@
     color: #dc0000;
 }
 
-.amountWrapper {
+.amountFieldWrapper {
     color: white;
     margin-top: 60px;
+}
 
+.amountWrapper {
+    position: relative;
+    margin-top: 30px;
 }
 
 .amountToday {
-    font-size: 90px;
+    font-size: 50px;
+}
+
+@media only screen and (min-width: 600px) {
+    .amountToday {
+        font-size: 90px;
+    }
 }
 
 .btcAmount {
     position: absolute;
-    transform: translateX(-100%);
+    transform: translateY(-100%);
+    top: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .btcAmount {
+        transform: translateX(-100%);
+    }
 }
 
 .percentageIncrease {
     display: block;
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
+}
+
+@media only screen and (min-width: 600px) {
+    .percentageIncrease {
+        font-size: 40px;
+    }
 }

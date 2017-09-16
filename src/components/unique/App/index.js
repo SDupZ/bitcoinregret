@@ -18,18 +18,26 @@ class App extends Component {
     return (
       <div className="c-app">
         <AppLoading />
-        <div className="c-header">
+        <header className="c-header">
           <h2>Bitcoin Regret</h2>
-        </div>        
-        <div className="c-content">
-          <InitialInvestment />
-          invested
-          <TimeAgo />       
-          <div>on</div>
-          <DateField />           
-          <AmountField />
-        </div>
-      </div>
+        </header>
+
+        <main className="c-content">
+            <div className="c-amountContainer">
+              <div className="c-amountInput"><InitialInvestment /></div>
+              <p className="c-amountText">invested on</p>
+              <DateField />
+            </div>
+            <div className="c-daysInput">
+              <TimeAgo />
+            </div>
+            <AmountField />
+        </main>
+
+        <footer>
+          <h4>Donate: 123123123</h4>
+        </footer>
+      </div>   
     );
   }
 }

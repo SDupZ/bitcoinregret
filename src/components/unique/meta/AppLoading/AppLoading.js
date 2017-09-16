@@ -7,11 +7,11 @@ class AppLoading extends Component {
     
     let loader = null;
     if (loading) {
-      loader = <div className="loader"><div className="loaderInner"/></div>
+      loader = <div className="loaderInner"/>
     }
 
     return (
-      <div>
+      <div className="loader">
         {loader}
       </div>
     )

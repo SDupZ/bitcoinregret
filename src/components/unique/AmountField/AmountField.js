@@ -10,12 +10,14 @@ function AmountField(props) {
   }
 
   return (
-    <div className="amountWrapper">
+    <div className="amountFieldWrapper">
       <div>is now worth: </div>
-      <span className="btcAmount">{btcAmount} BTC=</span>
-      <span className="amountToday">${numberWithCommas(amountToday)}</span>
-      <span className="currency">USD</span>
-      <span className={percentageClass}>{numberWithCommas(percentageIncrease)}%</span>
+      <div className="amountWrapper">
+        <span className="btcAmount">{btcAmount} BTC=</span>
+        <span className="amountToday">${numberWithCommas(amountToday)}</span>
+        <span className="currency">USD</span>
+        <span className={percentageClass}>{numberWithCommas(percentageIncrease)}%</span>
+      </div>
     </div>
   )
 }
