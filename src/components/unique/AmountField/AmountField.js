@@ -10,7 +10,7 @@ function AmountField(props) {
   }
 
   const formatAmountToday = (x) => {
-    x = Number(Number(x).toPrecision(4)).toFixed(2);x
+    x = Number(Number(x).toPrecision(4)).toFixed(2);
     return numberWithCommas(x);
   }
 

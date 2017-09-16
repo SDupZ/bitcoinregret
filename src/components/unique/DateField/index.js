@@ -1,6 +1,5 @@
 import {connect} from 'react-redux';
 import DateField from './DateField';
-import moment from 'moment';
 
 import { datetimeUpdated } from '../../../ducks/value';
 

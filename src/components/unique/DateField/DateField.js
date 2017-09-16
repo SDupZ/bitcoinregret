@@ -1,5 +1,4 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import './styles.css';
 import './calendarStyles.css';
@@ -37,6 +36,12 @@ class DateField extends React.Component {
         this.setState({ open: nextProps.open });
       }
     };
+
+    const isValid = (current) => {
+      const today = moment();
+      return (current.isBefore(today));
+    };
+
     return (
       <div className=".rdtWrapper">
         <div 
@@ -54,6 +59,7 @@ class DateField extends React.Component {
             onChange={this.handleChange}
             timeFormat={false}
             input={false}
+            isValidDate={isValid}
           />
         </div>
       </div >
