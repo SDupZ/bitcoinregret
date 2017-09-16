@@ -35,7 +35,6 @@ class App extends Component {
         </main>
 
         <footer>
-          <h4>Donate: 123123123</h4>
         </footer>
       </div>   
     );
