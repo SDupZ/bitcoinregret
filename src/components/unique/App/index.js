@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './styles.css';
 import {connect} from 'react-redux'
 import AmountField from '../../unique/AmountField';
@@ -11,7 +12,7 @@ import {fetchCurrentExchangeRate} from '../../../ducks/value'
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchCurrentExchangeRate()
+    this.props.fetchCurrentExchangeRate();
   }
 
   render() {   
