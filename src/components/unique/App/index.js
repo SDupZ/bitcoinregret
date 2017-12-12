@@ -7,6 +7,7 @@ import InitialInvestment from '../../unique/InitialInvestment';
 import TimeAgo from '../../unique/TimeAgo';
 import DateField from '../../unique/DateField';
 import AppLoading from '../../unique/meta/AppLoading';
+import LoadingBar from 'components/molecules/LoadingBar';
 
 import {fetchCurrentExchangeRate} from '../../../ducks/value'
 
@@ -18,7 +19,8 @@ class App extends Component {
   render() {   
     return (
       <div className="c-app">
-        <AppLoading />
+        <LoadingBar />
+
         <header className="c-header">
           <h2>Bitcoin Regret</h2>
         </header>
