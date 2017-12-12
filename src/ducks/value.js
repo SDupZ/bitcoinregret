@@ -1,5 +1,5 @@
 import {fetchPrice, fetchCurrentPrice} from '../lib/fetchingServices'
-import {updateLoading} from './meta'
+import { updateLoading, updateIsInvalidTime} from './meta'
 import moment from 'moment'
 
 // Initial State
@@ -8,7 +8,7 @@ const initState = {
     amountToday: 7713.35,
     currentExchangeRate: 4386.3238,
     exchangeRate: 568.6663,
-    timeValue: 0,
+    timeValue: 1,
     timeUnit: 'day',
     percentageDifference: 671.34,
     pastDateInvested: moment(),
@@ -21,7 +21,6 @@ const UPDATE_CURRENT_EXCHANGE_RATE = 'value/UPDATE_CURRENT_EXCHANGE_RATE'
 const UPDATE_TIME_VALUE = 'value/UPDATE_TIME_VALUE'
 const UPDATE_TIME_UNIT = 'value/UPDATE_TIME_UNIT'
 const UPDATE_DATETIME = 'value/UPDATE_DATETIME'
-
 
 // Action Creators
 export const updateAmount = (val) => ({type: UPDATE_AMOUNT, payload: val})
@@ -45,17 +44,24 @@ export const fetchCurrentExchangeRate = () => {
 }
 export const timeValueUpdated = (val) => (dispatch, getState) => {
     dispatch(updateTimeValue(val))
-    dispatch(updateLoading(true))
-    if (Number(val) === 0) {
-        fetchCurrentPrice()
-            .then(res => {
-                dispatch(updateExchangeRate(res.bpi.USD.rate_float))
-            })
+
+    const dayDifference = moment().diff(moment("2010-07-17"), 'days');
+    if (val < dayDifference) {
+        dispatch(updateIsInvalidTime(false));
+        dispatch(updateLoading(true))
+        if (Number(val) === 0) {
+            fetchCurrentPrice()
+                .then(res => {
+                    dispatch(updateExchangeRate(res.bpi.USD.rate_float))
+                })
+        } else {
+            fetchPrice(moment().add(-val, getState().value.timeUnit))
+                .then(res => {
+                    dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
+                })
+        }
     } else {
-        fetchPrice(moment().add(-val, getState().value.timeUnit))
-            .then(res => {
-                dispatch(updateExchangeRate(res.bpi[(Object.keys(res.bpi)[0])]))
-            })
+        dispatch(updateIsInvalidTime(true));
     }
 }
 export const timeUnitUpdated = (val) => (dispatch, getState) => {
@@ -68,6 +74,7 @@ export const timeUnitUpdated = (val) => (dispatch, getState) => {
 }
 export const datetimeUpdated = (val) => (dispatch, getState) => {
     dispatch(updateDatetime(val))
+    dispatch(updateIsInvalidTime(false));
     dispatch(updateLoading(true))
     if (moment().diff(val, 'days') === 0){
         fetchCurrentPrice()

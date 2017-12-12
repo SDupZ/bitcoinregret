@@ -2,7 +2,7 @@ import React from 'react'
 import './styles.css'
 
 function AmountField(props) {
-  const {amountToday, percentageIncrease, btcAmount} = props    
+  const { amountToday, percentageIncrease, btcAmount, isInvalidTime} = props;
   const percentageClass = 'percentageIncrease '.concat(percentageIncrease >= 0 ? "greenText":"redText")
 
   const numberWithCommas = (x) => {
@@ -21,13 +21,18 @@ function AmountField(props) {
 
   return (
     <div className="amountFieldWrapper">
-      <div>is now worth: </div>
-      <div className="amountWrapper">
-        <span className="btcAmount">{formatTwoDecimals(btcAmount)} BTC=</span>
-        <span className="amountToday" >${formatAmountToday(amountToday)}</span>
-        <span className="currency">USD</span>
+      {!isInvalidTime && <div>is now worth: </div>}
+      {!isInvalidTime && <div className="amountWrapper">
+            <span className="btcAmount">{formatTwoDecimals(btcAmount)} BTC=</span>
+            <span className="amountToday" >${formatAmountToday(amountToday)}</span>
+            <span className="currency">USD</span>
       </div>
-      <span className={percentageClass}>{formatTwoDecimals(percentageIncrease)}%</span>
+      }
+      {isInvalidTime && <div className="amountWrapper">
+        <span>Data for that time doesn't exist</span>
+      </div>
+      }
+      {!isInvalidTime && <span className={percentageClass}>{formatTwoDecimals(percentageIncrease)}%</span>}
     </div>
   )
 }

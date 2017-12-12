@@ -5,8 +5,4 @@ const mapStateToProps = (state, ownProps) => ({
   value: ownProps.value(state)
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleValueChange: value => dispatch(ownProps.handleValueChange(value))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(InputField)
+export default connect(mapStateToProps)(InputField)

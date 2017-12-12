@@ -39,7 +39,8 @@ class DateField extends React.Component {
 
     const isValid = (current) => {
       const today = moment();
-      return (current.isBefore(today));
+      const apiData = moment(moment("2010-07-17"));
+      return current.isBefore(today) && current.isAfter(apiData);
     };
 
     return (
