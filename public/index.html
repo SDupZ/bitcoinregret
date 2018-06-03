@@ -38,5 +38,19 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <script type="text/javascript">
+
+      (function () {
+        window['gobot'] = window['gobot'] || function () { (window['gobot'].queue = window['gobot'].queue || []).push(arguments) }
+        var script = document.createElement('script')
+        script.async = 1
+        script.src = 'https://www.getgobot.com/app/v1/gobot-client.js'
+        var insert = document.getElementsByTagName('script')[0]
+        insert.parentNode.insertBefore(script, insert)
+      })()
+      gobot('create', '-LE2C38-yIWTjcC2MiQy')
+      gobot('pageview')
+    </script>
   </body>
 </html>
