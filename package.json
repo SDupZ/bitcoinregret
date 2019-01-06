@@ -3,25 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "classnames": "^2.2.5",
-    "json-server": "^0.10.1",
-    "moment": "^2.18.1",
-    "react": "^15.5.4",
-    "react-datetime": "^2.10.1",
-    "react-dom": "^15.5.4",
-    "react-ga": "^2.2.0",
-    "react-icons": "^2.2.5",
-    "react-redux": "^5.0.5",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.10",
-    "redux": "^3.6.0",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "classnames": "^2.2.6",
+    "json-server": "^0.14.2",
+    "moment": "^2.23.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-datetime": "^2.16.3",
+    "react-dom": "^16.7.0",
+    "react-ga": "^2.5.6",
+    "react-icons": "^3.2.2",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.3",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
