@@ -1,7 +1,8 @@
 import React from 'react'
+
 import './styles.css'
 
-function AmountField(props) {
+export default function AmountField(props) {
   const { amountToday, percentageIncrease, btcAmount, isInvalidTime} = props;
   const percentageClass = 'percentageIncrease '.concat(percentageIncrease >= 0 ? "greenText":"redText")
 
@@ -36,5 +37,3 @@ function AmountField(props) {
     </div>
   )
 }
-
-export default AmountField

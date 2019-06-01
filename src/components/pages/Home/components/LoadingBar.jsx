@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const OuterProgressBar = styled.div`
   position: fixed;
@@ -11,7 +12,7 @@ const OuterProgressBar = styled.div`
   opacity: 0;
   transition: opacity 250ms ease;
   transition-delay: 500ms;
-  opacity: ${props.isLoading ? '1' : 0}
+  opacity: ${props => props.isLoading ? '1' : 0}
 `;
 
 const InnerProgressBar = styled.div`
@@ -25,9 +26,9 @@ const InnerProgressBar = styled.div`
   transition: 'width 400ms linear';
 `;
 
-export default function LoadingBar(props) {
-  const [isLoading, setLoading] = React.useState(true);
-  const [progress, setWidth] = React.useState(100);
+export default function LoadingBar() {
+  const [isLoading] = React.useState(true);
+  const [progress] = React.useState(100);
   
   return (
     <OuterProgressBar isLoading={isLoading}>
