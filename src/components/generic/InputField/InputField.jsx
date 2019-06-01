@@ -64,7 +64,6 @@ InputField.defaultProps = {
 
 InputField.propTypes = {
   requestFocus: PropTypes.bool,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   handleValueChange: PropTypes.func.isRequired,
-  maxLength: PropTypes.number.isRequired,
 };
