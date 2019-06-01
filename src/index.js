@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux'
 import './index.css';
-import App from './components/unique/App';
+import App from './components/pages/Home';
 import store from './store'
 
 import ReactGA from 'react-ga';
@@ -26,6 +26,5 @@ const logPageView = () => {
 ReactDOM.render(
     <Provider store={store}>
         {logPageView() && <AppWithRoutes />}
-    </Provider>,
-    document.getElementById('root'));
+    </Provider>, document.getElementById('root'));
 

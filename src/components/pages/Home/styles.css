@@ -15,28 +15,6 @@
                         "grid-footer";
 }
 
-.c-header {
-  grid-area: grid-header;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  padding: 24px 60px 24px 60px;
-  color: white;
-  text-align: center;
-}
-
-@media only screen and (min-width: 600px) {
-  .c-header {
-    justify-content: left;
-  }
-}
-
-.c-header h2 {
-  margin: 0;
-  display: inline-block;
-}
-
 .c-content {
   grid-area: grid-content;
   text-align: center;
