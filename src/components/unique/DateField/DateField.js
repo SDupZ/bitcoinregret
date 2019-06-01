@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import './styles.css';
 import './calendarStyles.css';
 
@@ -38,8 +37,8 @@ class DateField extends React.Component {
     };
 
     const isValid = (current) => {
-      const today = moment();
-      const apiData = moment(moment("2010-07-17"));
+      const today = new Date();
+      const apiData = new Date('2010-07-17');
       return current.isBefore(today) && current.isAfter(apiData);
     };
 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import moment from 'moment';
 import './styles.css'
 
 import InputField from '../../generic/InputField';
