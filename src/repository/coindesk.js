@@ -26,8 +26,7 @@ export const fetchPriceOnDate = async date => {
   const response = await fetch(PRICE_URL);
   const result = await response.json();
   
-  console.log(result);
-  return result;
+  return result.bpi[(Object.keys(result.bpi)[0])];
 };
 
 
