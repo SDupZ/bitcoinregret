@@ -26,10 +26,8 @@ const Input = styled.input`
 `;
 
 export default function InputField(props) {
-  const { initialValue, onChange, focus, maxLength } = props;
-
+  const { onChange, focus, maxLength, value } = props;
   const [error, setError] = React.useState();
-  const [value, setValue] = React.useState(initialValue);
   const inputRef = React.useRef();
 
   React.useEffect(() => {
@@ -48,11 +46,7 @@ export default function InputField(props) {
       setError(null)
     }
 
-    // Internal state
-    setValue(val);
-
-    // Notify consumers
-    onChange && onChange(val);
+    onChange(val);
   }
 
   const size = value.toString().length - 3 <= 0 ? 1 : value.toString().length - 3;
@@ -79,12 +73,11 @@ export default function InputField(props) {
 InputField.defaultProps = {
   focus: false,
   maxLength: Infinity,
-  initialValue: '',
 };
 
 InputField.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   focus: PropTypes.bool,
-  initialValue: PropTypes.string,
-  onChange: PropTypes.func,
   maxLength: PropTypes.number,
 };

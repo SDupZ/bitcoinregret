@@ -30,7 +30,7 @@ DatePicker.defaultProps = {
 }
 
 DatePicker.propTypes = {
-  initialDate: PropTypes.string,
+  initialDate: PropTypes.instanceOf(Date),
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
 }
