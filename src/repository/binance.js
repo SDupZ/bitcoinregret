@@ -51,8 +51,8 @@ export const fetchPriceOnDate = async (d) => {
   const response = await fetch(encodedUrl);
   const jsonResponse = await response.json();
 
-  console.log(jsonResponse, jsonResponse[responseMapping.close]);
-  return jsonResponse;
+  const price = jsonResponse[0][responseMapping.close];
+  return price;
 };
 
 export const somethingElse = () => {};

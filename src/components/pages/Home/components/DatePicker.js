@@ -4,13 +4,12 @@ import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function DatePicker(props) {
-  const { initialDate, minDate, maxDate } = props;
-  const [date, setDate] = React.useState(initialDate)
+  const { value, onChange, minDate, maxDate } = props;
 
   return (
     <ReactDatePicker
-      selected={date}
-      onChange={(date) => setDate(date)}
+      selected={value}
+      onChange={(date) => onChange(date)}
       peekNextMonth
       showMonthDropdown
       showYearDropdown
@@ -30,7 +29,8 @@ DatePicker.defaultProps = {
 }
 
 DatePicker.propTypes = {
-  initialDate: PropTypes.instanceOf(Date),
+  value: PropTypes.instanceOf(Date),
+  onChange: PropTypes.func,
   minDate: PropTypes.instanceOf(Date),
   maxDate: PropTypes.instanceOf(Date),
 }

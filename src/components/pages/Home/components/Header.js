@@ -20,10 +20,10 @@ const Title = styled.h2`
   margin: 0;
 `;
 
-export default function Header(props) {
+export default function Header() {
   return (
     <Wrapper>
       <Title>Bitcoin Regret</Title>
     </Wrapper>
-  )
+  );
 }

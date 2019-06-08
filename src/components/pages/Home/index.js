@@ -7,6 +7,8 @@ import InputField from './components/InputField';
 import ValueToday from './components/ValueToday';
 import DatePicker from './components/DatePicker';
 
+import useCalculateReturns from './useCalculateReturns';
+
 const Layout = styled.div`
   display: grid;
   min-height: 100vh;
@@ -38,42 +40,13 @@ export default function Home() {
     INITIAL_INVESTMENT_DATE
   );
 
-  React.useEffect(() => {
-    console.log('I should fetch the current exchange rate');
-  }, []);
-
-  const calculateReturns = () => {
-    // 1) Find the exchange rate of USD to crypotocurrency on the given date.
-    // E.g. 400: 400usd = 1 bitcoin
-    const historicalExchangeRate = 400;
-
-    // 2) Calculate how much of the Cryptocurrecy I had on the given date.
-    // E.g If I bought $100 bitcoin in 2010 I had 10 Bitcoin
-    const amountCryptoCurrency = initialInvestmentValue * (1 / historicalExchangeRate);
-
-    // 3) Fetch the current exchange rate of the cryptocurrency
-    const currentExchangeRate = 20000;
-
-    // 4) Calculate how much that amount is worth today
-    const investmentWorthToday = amountCryptoCurrency * currentExchangeRate;
-
-    const percentageDifference =
-      ((investmentWorthToday - initialInvestmentValue) /
-        initialInvestmentValue) *
-      100;
-
-    return {
-      investmentWorthToday,
-      amountCryptoCurrency,
-      percentageDifference
-    };
-  };
-
   const {
     investmentWorthToday,
     amountCryptoCurrency,
     percentageDifference,
-  } = calculateReturns();
+  } = useCalculateReturns(initialInvestmentValue, investmentDate);
+
+  const hasErrors = !investmentWorthToday || !amountCryptoCurrency || !percentageDifference;
 
   return (
     <Layout>
@@ -90,14 +63,14 @@ export default function Home() {
         {/* <InputField /> */}
 
         <DatePicker
-          selected={investmentDate}
+          value={investmentDate}
           onChange={newDate => setInvestmentDate(newDate)}
         />
-        <ValueToday
+        {!hasErrors && <ValueToday
           amountToday={investmentWorthToday}
           amountTodayInCrypto={amountCryptoCurrency}
           percentageIncrease={percentageDifference}
-        />
+        />}
       </Content>
     </Layout>
   );
