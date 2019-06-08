@@ -5,6 +5,7 @@ import Header from './components/Header';
 import LoadingBar from './components/LoadingBar';
 import InputField from './components/InputField';
 import ValueToday from './components/ValueToday';
+import DatePicker from './components/DatePicker';
 
 const Layout = styled.div`
   display: grid;
@@ -38,7 +39,7 @@ export default function Home() {
       <Content>
         <InputField />
         <InputField />
-
+        <DatePicker />
         <ValueToday
           amountToday={2123}
           amountTodayInCrypto={0.1}

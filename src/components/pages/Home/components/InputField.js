@@ -8,13 +8,13 @@ const Wrapper = styled.div`
 
   background: rgba(1,1,1,0.2);
   border-radius: 4px;
-  padding: 10px;
 `;
 
 const Input = styled.input`
   color: white;
   border: none;
   background: none;
+  padding: 10px;
   font-size: 32px;
   text-align: center;
 
