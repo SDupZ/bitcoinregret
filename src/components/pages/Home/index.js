@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import Header from './components/Header';
 import LoadingBar from './components/LoadingBar';
+import InputField from './components/InputField';
+import ValueToday from './components/ValueToday';
 
 const Layout = styled.div`
   display: grid;
@@ -19,6 +21,11 @@ const Layout = styled.div`
     'grid-footer';
 `;
 
+const Content = styled.div`
+  grid-area: grid-content;
+  text-align: center;
+`;
+
 export default function Home() {
   React.useEffect(() => {
     console.log('I should fetch the current exchange rate');
@@ -28,6 +35,16 @@ export default function Home() {
     <Layout>
       <LoadingBar />
       <Header />
+      <Content>
+        <InputField />
+        <InputField />
+
+        <ValueToday
+          amountToday={2123}
+          amountTodayInCrypto={0.1}
+          percentageIncrease={400.1}
+          />
+      </Content>
     </Layout>
   );
 }
