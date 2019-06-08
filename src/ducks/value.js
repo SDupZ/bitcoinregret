@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { fetchPrice, fetchCurrentPrice } from '../lib/fetchingServices';
+import { fetchPrice, fetchCurrentPrice } from '../repository/fetchingServices';
 import { updateLoading, updateIsInvalidTime } from './meta';
 
 // Initial State

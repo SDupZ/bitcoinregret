@@ -29,7 +29,7 @@ export const fetchCurrentPrice = async () => {
   return jsonResponse.price;
 };
 
-export const fetchPriceOnDate = async d => {
+export const fetchPriceOnDate = async (d) => {
   const endpoint = '/api/v1/klines';
 
   const date = new Date(d);

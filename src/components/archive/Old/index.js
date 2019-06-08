@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import AmountField from 'components/unique/AmountField';
-import InitialInvestment from 'components/unique/InitialInvestment';
-import TimeAgo from 'components/unique/TimeAgo';
-import DateField from 'components/unique/DateField';
+import AmountField from 'components/archive/unique/AmountField';
+import InitialInvestment from 'components/archive/unique/InitialInvestment';
+import TimeAgo from 'components/archive/unique/TimeAgo';
+import DateField from 'components/archive/unique/DateField';
 
 import { fetchCurrentExchangeRate } from 'ducks/value';
 

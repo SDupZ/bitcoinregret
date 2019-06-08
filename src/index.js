@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import ReactGA from 'react-ga';
 
-import Home from './components/pages/Home';
-import store from './store';
+import Home from  'components/pages/Home';
 
 import './index.css';
 
@@ -26,6 +24,6 @@ const logPageView = () => {
 };
 
 ReactDOM.render(
-  <Provider store={store}>{logPageView() && <AppWithRoutes />}</Provider>,
+  logPageView() && <AppWithRoutes />,
   document.getElementById('root')
 );

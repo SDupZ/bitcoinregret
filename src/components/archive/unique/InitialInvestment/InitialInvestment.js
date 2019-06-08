@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './styles.css'
 
-import {updateAmount} from '../../../ducks/value'
+import {updateAmount} from '../../../../ducks/value'
 import InputField from '../../generic/InputField';
 
 class InitialInvestment extends Component {

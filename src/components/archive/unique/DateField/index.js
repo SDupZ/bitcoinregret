@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import DateField from './DateField';
 
-import { datetimeUpdated } from '../../../ducks/value';
+import { datetimeUpdated } from '../../../../ducks/value';
 
 const mapStateToProps = (state) => ({
     day: state.value.pastDateInvested.date(),

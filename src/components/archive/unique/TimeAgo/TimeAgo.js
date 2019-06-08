@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import './styles.css'
 
 import InputField from '../../generic/InputField';
-import {timeValueUpdated} from '../../../ducks/value'
+import {timeValueUpdated} from '../../../../ducks/value'
 
 class TimeAgo extends Component {
 
