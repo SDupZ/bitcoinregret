@@ -59,9 +59,11 @@ export default function Home() {
   }
 
   const handleDaysAgoChanged = (value) => {
-    if (Number.parseInt(value)) {
+    const parsedNumber = Number(value);
+    if (!Number.isNaN(parsedNumber)) {
+      const daysAgo = Number.parseInt(parsedNumber)
       const newDate = new Date();
-      newDate.setDate(newDate.getDate() - value);
+      newDate.setDate(newDate.getDate() - daysAgo);
       setInvestmentDate(newDate);
     }
     setDaysAgoText(value);

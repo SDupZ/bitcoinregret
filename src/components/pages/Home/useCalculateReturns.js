@@ -8,7 +8,7 @@ const convertNaNToUndefined = (obj) => {
       newObj[k] = obj[k] === undefined || obj[k] === null || Number.isNaN(obj[k]) ? undefined : obj[k] ;
     });
   return newObj;
-}
+};
 
 const useCalculateReturns = (initialInvestmentValue, investmentDate) => {
   const { currentExchangeRate, historicalExchangeRate } = useExchangeRate(investmentDate);

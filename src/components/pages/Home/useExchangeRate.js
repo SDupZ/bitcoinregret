@@ -1,6 +1,14 @@
 import React from 'react';
 import { fetchCurrentPrice, fetchPriceOnDate } from 'repository';
 
+const isSameDay = (d1, d2) => {
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+};
+
+const isToday = date => isSameDay(new Date(), date);
+
 const useExchangeRate = (investmentDate) => {
   const [currentExchangeRate, setCurrentExchangeRate] = React.useState();
   const [historicalExchangeRate, setHistoricalExchangeRate] = React.useState();
@@ -24,12 +32,14 @@ const useExchangeRate = (investmentDate) => {
   // Find the exchange rate of USD to crypotocurrency on the given date.
   // E.g. 400: 400usd = 1 bitcoin
   React.useEffect(() => {
-    fetchAndSetHistoricalExchangeRate(investmentDate);
+    if (!isToday(investmentDate)) {
+      fetchAndSetHistoricalExchangeRate(investmentDate);
+    }
   }, [investmentDate]);
 
   return {
     currentExchangeRate,
-    historicalExchangeRate,
+    historicalExchangeRate: isToday(investmentDate) ? currentExchangeRate : historicalExchangeRate,
   }
 };
 
