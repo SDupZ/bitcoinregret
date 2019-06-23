@@ -14,7 +14,7 @@ const Input = styled.input`
   color: white;
   border: none;
   background: none;
-  padding: 10px;
+  padding: 8px 10px;
   font-size: 32px;
   text-align: center;
 

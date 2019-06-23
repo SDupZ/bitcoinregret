@@ -5,12 +5,10 @@ import MOBILE from 'components/breakpoints';
 
 const Wrapper = styled.div`
   color: white;
-  margin-top: 60px;
 `;
 
 const AmountWrapper = styled.div`
   position: relative;
-  margin-top: 30px;
 `;
 
 const AmountToday = styled.span`

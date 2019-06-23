@@ -18,6 +18,7 @@ export default function DatePicker(props) {
       dropdownMode="select"
       minDate={minDate}
       maxDate={maxDate}
+      dateFormat="yyyy/MM/dd"
     />
   );
 }

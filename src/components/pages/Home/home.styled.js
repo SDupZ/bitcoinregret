@@ -40,3 +40,11 @@ export const SidebarItem = styled.div`
 export const SidebarLabel = styled.div`
   margin-bottom: ${spacingMd};
 `;
+
+export const InvestedOn = styled.span`
+  margin: 0 30px;
+`;
+
+export const NowWorth = styled.div`
+  margin: 30px 0;
+`;

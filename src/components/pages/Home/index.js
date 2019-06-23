@@ -16,6 +16,8 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
+  InvestedOn,
+  NowWorth,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -69,13 +71,15 @@ export default function Home() {
           onChange={(value) => setInitialInvestmentText(value)}
         />
 
-        invested on
+        <InvestedOn>invested on</InvestedOn>
 
         {/* Date picker */}
         <DatePicker
           value={investmentDate}
           onChange={handleInitialInvestmentDateChanged}
         />
+
+        <NowWorth>is now worth:</NowWorth>
 
         {/* Value Today */}
         {showResults && <ValueToday
@@ -86,7 +90,7 @@ export default function Home() {
       </Content>
 
       <SideBar>
-        <SidebarHeader>Extra options</SidebarHeader>
+        <SidebarHeader>Options</SidebarHeader>
 
         {/* Number of days ago */}
         <SidebarItem>
