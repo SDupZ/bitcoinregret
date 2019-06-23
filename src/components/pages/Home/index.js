@@ -4,7 +4,7 @@ import Header from './components/Header';
 import LoadingBar from './components/LoadingBar';
 import InputField from './components/InputField';
 import ValueToday from './components/ValueToday';
-import DatePicker from './components/DatePicker';
+import DatePicker from './components/DatePicker/DatePicker';
 
 import useCalculateReturns from './useCalculateReturns';
 import calculateDaysBetweenTwoDates from './utils';
