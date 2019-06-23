@@ -64,20 +64,20 @@ export default function ValueToday(props) {
     return numberWithCommas(formatted);
   }
 
-  const formatZeroDecimals = (x) => {
-    const formatted = Number(x).toFixed(0);
+  const formatDecimals = (x, decimals) => {
+    const formatted = Number(x).toFixed(decimals);
     return numberWithCommas(formatted);
   }
 
   return (
     <Wrapper>
       <AmountWrapper>
-        <CurrencyQuantity>{formatZeroDecimals(amountTodayInCrypto)} BTC=</CurrencyQuantity>
+        <CurrencyQuantity>{formatDecimals(amountTodayInCrypto, 0)} BTC=</CurrencyQuantity>
         <AmountToday>${formatAmountToday(amountToday)}</AmountToday>
         <Currency>USD</Currency>
       </AmountWrapper>
       <PercentageText positiveIncrease={percentageIncrease >= 0}>
-        {formatZeroDecimals(percentageIncrease)}%
+        {formatDecimals(percentageIncrease, 2)}%
       </PercentageText>
     </Wrapper>
   )
