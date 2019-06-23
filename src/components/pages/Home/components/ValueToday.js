@@ -74,7 +74,7 @@ export default function ValueToday(props) {
         <AmountToday>${formatAmountToday(amountToday)}</AmountToday>
         <Currency>USD</Currency>
       </AmountWrapper>
-      <PercentageText>
+      <PercentageText positiveIncrease={percentageIncrease >= 0}>
         {formatTwoDecimals(percentageIncrease)}%
       </PercentageText>
     </Wrapper>
