@@ -10,7 +10,7 @@ export const Layout = styled.div`
   color: white;
   
   grid-template-columns: 1fr minmax(${Math.floor(MOBILE * 2 / 3)}px, 5fr) minmax(${Math.floor(MOBILE / 3)}px, 1fr) 1fr;
-  grid-template-rows: 80px 1fr 50px;
+  grid-template-rows: 120px 1fr 50px;
   grid-template-areas:
     'leftEdge header header rightEdge'
     'leftEdge content sidebar rightEdge'
@@ -19,17 +19,14 @@ export const Layout = styled.div`
 
 export const Content = styled.div`
   grid-area: content;
-  margin-top: 100px;
   text-align: center;
 `;
 
 export const SideBar = styled.div`
   grid-area: sidebar;
-  margin-top: 100px;
 `;
 
 export const SidebarHeader = styled.div`
-  font-size: 24px;
   margin-bottom: ${spacingBase};
 `;
 
