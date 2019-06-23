@@ -18,6 +18,7 @@ import {
   SidebarLabel,
   InvestedOn,
   NowWorth,
+  InvestmentValue,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -64,12 +65,13 @@ export default function Home() {
       <LoadingBar />
       <Header />
       <Content>
-        $
         {/* Investment Value */}
-        <InputField
-          value={`${initialInvestmentText}`}
-          onChange={(value) => setInitialInvestmentText(value)}
-        />
+        <InvestmentValue>
+          <InputField
+            value={`${initialInvestmentText}`}
+            onChange={(value) => setInitialInvestmentText(value)}
+          />
+        </InvestmentValue>
 
         <InvestedOn>invested on</InvestedOn>
 

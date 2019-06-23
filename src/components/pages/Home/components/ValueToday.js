@@ -14,8 +14,8 @@ const AmountWrapper = styled.div`
 const AmountToday = styled.span`
   font-size: 6vw;
 
-  @media only screen and (min-width: ${MOBILE}px) {
-    font-size: 6vw;
+  @media only screen and (max-width: ${MOBILE}px) {
+    font-size: 42px;
   }
 `;
 
@@ -24,16 +24,18 @@ const CurrencyQuantity = styled.span`
   transform: translateY(-100%);
   top: 0;
 
-  @media only screen and (min-width: ${MOBILE}px) {
-    transform: translateY(-100%);
+  @media only screen and (max-width: ${MOBILE}px) {
+    display: none;
   }
 `;
 
 const Currency = styled.span`
-  .currency {
-    position: absolute;
-    transform: translate(-100%, 100%);
-    bottom: 0;
+  position: absolute;
+  transform: translate(-100%, 100%);
+  bottom: 0;
+
+  @media only screen and (max-width: ${MOBILE}px) {
+    display: none;
   }
 `;
 
@@ -44,8 +46,9 @@ const PercentageText = styled.span`
   margin-top: 24px;
   color: ${props => props.positiveIncrease ? '#0adc00' : '#dc0000'}
 
-  @media only screen and (min-width: ${MOBILE}px) {
-    font-size: 40px;
+  @media only screen and (max-width: ${MOBILE}px) {
+    font-size: 24px;
+    margin-top: 4px;
   }
 `;
 
@@ -57,24 +60,24 @@ export default function ValueToday(props) {
   }
 
   const formatAmountToday = (x) => {
-    const formatted = Number(Number(x).toPrecision(4)).toFixed(2);
+    const formatted = Number(Number(x).toPrecision(4)).toFixed(0);
     return numberWithCommas(formatted);
   }
 
-  const formatTwoDecimals = (x) => {
-    const formatted = Number(x).toFixed(2);
+  const formatZeroDecimals = (x) => {
+    const formatted = Number(x).toFixed(0);
     return numberWithCommas(formatted);
   }
 
   return (
     <Wrapper>
       <AmountWrapper>
-        <CurrencyQuantity>{formatTwoDecimals(amountTodayInCrypto)} BTC=</CurrencyQuantity>
+        <CurrencyQuantity>{formatZeroDecimals(amountTodayInCrypto)} BTC=</CurrencyQuantity>
         <AmountToday>${formatAmountToday(amountToday)}</AmountToday>
         <Currency>USD</Currency>
       </AmountWrapper>
       <PercentageText positiveIncrease={percentageIncrease >= 0}>
-        {formatTwoDecimals(percentageIncrease)}%
+        {formatZeroDecimals(percentageIncrease)}%
       </PercentageText>
     </Wrapper>
   )
