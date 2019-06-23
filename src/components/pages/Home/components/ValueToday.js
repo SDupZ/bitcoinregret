@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import MOBILE from 'components/breakpoints';
 
 const Wrapper = styled.div`
   color: white;
@@ -15,7 +16,7 @@ const AmountWrapper = styled.div`
 const AmountToday = styled.span`
   font-size: 6vw;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${MOBILE}px) {
     font-size: 6vw;
   }
 `;
@@ -25,7 +26,7 @@ const CurrencyQuantity = styled.span`
   transform: translateY(-100%);
   top: 0;
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${MOBILE}px) {
     transform: translateY(-100%);
   }
 `;
@@ -45,7 +46,7 @@ const PercentageText = styled.span`
   margin-top: 24px;
   color: ${props => props.positiveIncrease ? '#0adc00' : '#dc0000'}
 
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${MOBILE}px) {
     font-size: 40px;
   }
 `;

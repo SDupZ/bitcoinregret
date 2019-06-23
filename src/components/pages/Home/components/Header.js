@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import MOBILE from 'components/breakpoints';
 
 const Wrapper = styled.header`
-  grid-area: grid-header;
+  grid-area: header;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  padding: 24px 60px 24px 60px;
   color: white;
   text-align: center;
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: ${MOBILE}px) {
     justify-content: left;
   }
 `;
