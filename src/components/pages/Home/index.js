@@ -8,6 +8,7 @@ import ValueToday from './components/ValueToday';
 import DatePicker from './components/DatePicker';
 
 import useCalculateReturns from './useCalculateReturns';
+import calculateDaysBetweenTwoDates from './utils';
 
 const Layout = styled.div`
   display: grid;
@@ -39,6 +40,7 @@ export default function Home() {
   const [investmentDate, setInvestmentDate] = React.useState(
     INITIAL_INVESTMENT_DATE
   );
+  const [daysAgoText, setDaysAgoText] = React.useState('0');
 
   const initialInvestmentValue = Number(initialInvestmentText);
 
@@ -50,9 +52,20 @@ export default function Home() {
 
   const showResults = ![investmentWorthToday, amountCryptoCurrency, percentageDifference].some(e => e === undefined);
 
-  const onChangeInitialInvestmentText = (value) => {
-    setInitialInvestmentText(value);
-  };
+  const handleInitialInvestmentDateChanged = (date) => {
+    const daysAgo = calculateDaysBetweenTwoDates(new Date(), date);
+    setInvestmentDate(date);
+    setDaysAgoText(`${daysAgo}`);
+  }
+
+  const handleDaysAgoChanged = (value) => {
+    if (Number.parseInt(value)) {
+      const newDate = new Date();
+      newDate.setDate(newDate.getDate() - value);
+      setInvestmentDate(newDate);
+    }
+    setDaysAgoText(value);
+  }
 
   return (
     <Layout>
@@ -63,18 +76,26 @@ export default function Home() {
         {/* Investment Value */}
         <InputField
           value={`${initialInvestmentText}`}
-          onChange={onChangeInitialInvestmentText}
+          onChange={(value) => setInitialInvestmentText(value)}
         />
 
         invested on
 
         {/* Number of days ago */}
-        {/* <InputField /> */}
+        <InputField
+          value={daysAgoText}
+          onChange={handleDaysAgoChanged}
+        />
 
+        days ago
+
+        {/* Date picker */}
         <DatePicker
           value={investmentDate}
-          onChange={newDate => setInvestmentDate(newDate)}
+          onChange={handleInitialInvestmentDateChanged}
         />
+
+        {/* Value Today */}
         {showResults && <ValueToday
           amountToday={investmentWorthToday}
           amountTodayInCrypto={amountCryptoCurrency}
