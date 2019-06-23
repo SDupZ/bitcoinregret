@@ -1,70 +1,40 @@
-import React from 'react';
-import { fetchCurrentPrice, fetchPriceOnDate } from 'repository';
+import useExchangeRate from './useExchangeRate';
 
-const isSameDay = (d1, d2) => {
-  return d1.getFullYear() === d2.getFullYear() &&
-    d1.getMonth() === d2.getMonth() &&
-    d1.getDate() === d2.getDate();
+const convertNaNToUndefined = (obj) => {
+  const newObj = {};
+  Object
+    .keys(obj)
+    .forEach((k) => {
+      newObj[k] = obj[k] === undefined || obj[k] === null || Number.isNaN(obj[k]) ? undefined : obj[k] ;
+    });
+  return newObj;
 }
 
 const useCalculateReturns = (initialInvestmentValue, investmentDate) => {
-  const [currentExchangeRate, setCurrentExchangeRate] = React.useState();
-  const [historicalExchangeRate, setHistoricalExchangeRate] = React.useState();
-
-  const fetchAndSetCurrentPrice = async () => {
-    const currentPrice = await fetchCurrentPrice();
-    setCurrentExchangeRate(currentPrice);
-    setHistoricalExchangeRate(currentPrice);
-  }
-
-  const fetchAndSetHistoricalExchangeRate = async (date) => {
-    const historicalPrice = await fetchPriceOnDate(date);
-    setHistoricalExchangeRate(historicalPrice);
-  };
-
-  // Fetch current exchange rate
-  React.useEffect(() => {
-    fetchAndSetCurrentPrice();
-  }, []);
-  
-
-  // Find the exchange rate of USD to crypotocurrency on the given date.
-  // E.g. 400: 400usd = 1 bitcoin
-  React.useEffect(() => {
-    if (isSameDay(new Date(), investmentDate)) {
-      setHistoricalExchangeRate(currentExchangeRate);
-    } else {
-      fetchAndSetHistoricalExchangeRate(investmentDate);
-    }
-  }, [investmentDate, currentExchangeRate]);
-
-
-  // Check we have everything.
-  if (!initialInvestmentValue || !currentExchangeRate || !historicalExchangeRate) {
-    return {
-      investmentWorthToday: undefined,
-      amountCryptoCurrency: undefined,
-      percentageDifference: undefined,
-    }
-  }
+  const { currentExchangeRate, historicalExchangeRate } = useExchangeRate(investmentDate);
 
   // Calculate how much of the Cryptocurrecy I had on the given date.
   // E.g If I bought $100 bitcoin in 2010 I had 10 Bitcoin
-  const amountCryptoCurrency = initialInvestmentValue * (1 / historicalExchangeRate);
+  const amountCryptoCurrency = historicalExchangeRate ? initialInvestmentValue * (1 / historicalExchangeRate) : undefined;
 
   // Calculate how much that amount is worth today
   const investmentWorthToday = amountCryptoCurrency * currentExchangeRate;
 
-  const percentageDifference =
-    ((investmentWorthToday - initialInvestmentValue) /
-      initialInvestmentValue) *
-    100;
+  let percentageDifference;
 
-  return {
+  if (initialInvestmentValue === 0) {
+    percentageDifference = 0;
+  } else {
+    percentageDifference = ((investmentWorthToday - initialInvestmentValue) / initialInvestmentValue) * 100;
+  }
+
+  const returnValue = {
     investmentWorthToday,
     amountCryptoCurrency,
     percentageDifference
   };
+
+  return convertNaNToUndefined(returnValue);
 };
 
 export default useCalculateReturns;

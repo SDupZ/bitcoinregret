@@ -33,12 +33,14 @@ const INITIAL_INVESTMENT_VALUE = 1000;
 const INITIAL_INVESTMENT_DATE = new Date();
 
 export default function Home() {
-  const [initialInvestmentValue, setInitialInvestmentValue] = React.useState(
+  const [initialInvestmentText, setInitialInvestmentText] = React.useState(
     INITIAL_INVESTMENT_VALUE
   );
   const [investmentDate, setInvestmentDate] = React.useState(
     INITIAL_INVESTMENT_DATE
   );
+
+  const initialInvestmentValue = Number(initialInvestmentText);
 
   const {
     investmentWorthToday,
@@ -46,18 +48,25 @@ export default function Home() {
     percentageDifference,
   } = useCalculateReturns(initialInvestmentValue, investmentDate);
 
-  const hasErrors = !investmentWorthToday || !amountCryptoCurrency || !percentageDifference;
+  const showResults = ![investmentWorthToday, amountCryptoCurrency, percentageDifference].some(e => e === undefined);
+
+  const onChangeInitialInvestmentText = (value) => {
+    setInitialInvestmentText(value);
+  };
 
   return (
     <Layout>
       <LoadingBar />
       <Header />
       <Content>
+        $
         {/* Investment Value */}
         <InputField
-          value={`${initialInvestmentValue}`}
-          onChange={value => setInitialInvestmentValue(value)}
+          value={`${initialInvestmentText}`}
+          onChange={onChangeInitialInvestmentText}
         />
+
+        invested on
 
         {/* Number of days ago */}
         {/* <InputField /> */}
@@ -66,7 +75,7 @@ export default function Home() {
           value={investmentDate}
           onChange={newDate => setInvestmentDate(newDate)}
         />
-        {!hasErrors && <ValueToday
+        {showResults && <ValueToday
           amountToday={investmentWorthToday}
           amountTodayInCrypto={amountCryptoCurrency}
           percentageIncrease={percentageDifference}
