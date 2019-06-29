@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
+import useIsMobile from 'hooks/useIsMobile';
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import './datepicker.scss';
 
 export default function DatePicker(props) {
   const { value, onChange, minDate, maxDate } = props;
+  const isMobile = useIsMobile();
 
   return (
     <ReactDatePicker
@@ -19,6 +22,7 @@ export default function DatePicker(props) {
       minDate={minDate}
       maxDate={maxDate}
       dateFormat="yyyy/MM/dd"
+      withPortal={isMobile ? true : undefined}
     />
   );
 }
