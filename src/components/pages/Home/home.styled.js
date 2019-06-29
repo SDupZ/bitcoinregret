@@ -7,7 +7,6 @@ export const Layout = styled.div`
   min-height: 100vh;
   min-width: 100%;
   background: #18232e;
-  color: white;
   
   grid-template-columns: 1fr minmax(${Math.floor(MOBILE * 2 / 3)}px, 5fr) minmax(${Math.floor(MOBILE / 3)}px, 1fr) 1fr;
   grid-template-rows: 120px 1fr 50px;
@@ -78,11 +77,11 @@ export const InvestmentValue = styled.span`
   }
 
   &:after {
-    content: "USD";
-    top: 0;
+    content: "$";
+    top: 50%;
     left: 0;
     position: absolute;
-    transform: translateY(-100%);
-    font-size: 12px;
+    transform: translate(-120%, -50%);
+    font-size: 28px;
   }
 `;
