@@ -57,10 +57,12 @@ export const SidebarLabel = styled.div`
 
 export const InvestedOn = styled.span`
   margin: 0 30px;
+  color: white;
 `;
 
 export const NowWorth = styled.div`
-  margin: 30px 0;
+  margin: 40px 0;
+  color: white;
 `;
 
 export const InvestmentValue = styled.span`
@@ -91,6 +93,7 @@ export const DaysAgo = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  color: white;
 
   > * {
     margin-right: 20px;
