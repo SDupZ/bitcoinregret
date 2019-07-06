@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import usePageLoading from 'hooks/usePageLoading';
 
 const OuterProgressBar = styled.div`
   position: fixed;
@@ -27,12 +28,18 @@ const InnerProgressBar = styled.div`
 `;
 
 export default function LoadingBar() {
-  const [isLoading] = React.useState(true);
+  const { isLoading } = usePageLoading();
   const [progress] = React.useState(100);
   
   return (
-    <OuterProgressBar isLoading={isLoading}>
-      <InnerProgressBar width={progress} isLoading={isLoading} />
-    </OuterProgressBar>
+    <React.Fragment>
+      {isLoading &&
+        <OuterProgressBar isLoading>
+          <InnerProgressBar width={progress} isLoading={isLoading} />
+        </OuterProgressBar>}
+      {!isLoading && <div>NOT LOADING</div>}
+
+    </React.Fragment>
   )
+    
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
+import MOBILE from 'components/breakpoints';
+import useIsMobile from 'hooks/useIsMobile';
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -23,12 +25,18 @@ const Input = styled.input`
   ${props => props.hasErrors && css`
     color: red;
   `}
+
+  @media only screen and (max-width: ${MOBILE}px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 export default function InputField(props) {
   const { onChange, focus, maxLength, value } = props;
   const [error, setError] = React.useState();
   const inputRef = React.useRef();
+  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     if (focus) {
@@ -50,7 +58,7 @@ export default function InputField(props) {
   }
 
   const size = value.toString().length - 3 <= 0 ? 1 : value.toString().length - 3;
-  const width = (value.toString().length * 20).toString().concat('px');
+  const width = isMobile ? undefined : (value.toString().length * 40).toString().concat('px');
   const style = { width };
 
   return (

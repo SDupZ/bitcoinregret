@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchCurrentPrice, fetchPriceOnDate } from 'repository';
+import usePageLoading from 'hooks/usePageLoading';
 
 const isSameDay = (d1, d2) => {
   return d1.getFullYear() === d2.getFullYear() &&
@@ -10,17 +11,19 @@ const isSameDay = (d1, d2) => {
 const isToday = date => isSameDay(new Date(), date);
 
 const useExchangeRate = (investmentDate) => {
+  // const [isError, setError] = React.useState(false);
   const [currentExchangeRate, setCurrentExchangeRate] = React.useState();
   const [historicalExchangeRate, setHistoricalExchangeRate] = React.useState();
+  const { addPromise } = usePageLoading();
 
   const fetchAndSetCurrentPrice = async () => {
-    const currentPrice = await fetchCurrentPrice();
+    const currentPrice = await addPromise(fetchCurrentPrice());;
     setCurrentExchangeRate(currentPrice);
     setHistoricalExchangeRate(currentPrice);
   }
 
   const fetchAndSetHistoricalExchangeRate = async (date) => {
-    const historicalPrice = await fetchPriceOnDate(date);
+    const historicalPrice = await addPromise(fetchPriceOnDate(date));;
     setHistoricalExchangeRate(historicalPrice);
   };
 
