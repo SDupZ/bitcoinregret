@@ -11,9 +11,9 @@ const OuterProgressBar = styled.div`
   height: 2px;
   background-color: #E91E63;
   opacity: 0;
-  transition: ${props => props.isLoading ? 'none' : 'opacity 500ms ease'},
+  transition: ${props => props.isLoading ? 'none' : 'opacity 500ms ease'};
   transition-delay: 500ms;
-  opacity: ${props => props.isLoading ? '1' : 0}
+  opacity: ${props => props.isLoading ? 1 : 0}
 `;
 
 const InnerProgressBar = styled.div`
@@ -24,7 +24,7 @@ const InnerProgressBar = styled.div`
   transform-origin: left;
   background-color: #FEFF07;
   width: ${props => props.width}%;
-  transition: ${props => props.transition ? 'width 400ms linear' : 'none'},
+  transition: ${props => props.transition ? 'width 400ms linear' : 'none'};
 `;
 
 
@@ -88,7 +88,7 @@ class LoadingBar extends Component {
 
     return (
       <OuterProgressBar isLoading={isLoading} transition={transition}>
-        <InnerProgressBar width={progress} />
+        <InnerProgressBar width={progress} transition={transition} />
       </OuterProgressBar>
     );
   }
