@@ -85,6 +85,7 @@ export const InvestmentValue = styled.span`
     position: absolute;
     transform: translate(-120%, -50%);
     font-size: 28px;
+    color: white;
   }
 `;
 
@@ -101,5 +102,15 @@ export const DaysAgo = styled.div`
     &:last-child {
       margin-right: 0;
     }
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: ${MOBILE}px) {
+    display: block;
   }
 `;

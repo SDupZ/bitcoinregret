@@ -20,6 +20,7 @@ import {
   NowWorth,
   InvestmentValue,
   DaysAgo,
+  Row,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -66,21 +67,23 @@ export default function Home() {
       <LoadingBar />
       <Header />
       <Content>
-        {/* Investment Value */}
-        <InvestmentValue>
-          <InputField
-            value={`${initialInvestmentText}`}
-            onChange={(value) => setInitialInvestmentText(value)}
+        <Row>
+          {/* Investment Value */}
+          <InvestmentValue>
+            <InputField
+              value={`${initialInvestmentText}`}
+              onChange={(value) => setInitialInvestmentText(value)}
+            />
+          </InvestmentValue>
+
+          <InvestedOn>invested on</InvestedOn>
+
+          {/* Date picker */}
+          <DatePicker
+            value={investmentDate}
+            onChange={handleInitialInvestmentDateChanged}
           />
-        </InvestmentValue>
-
-        <InvestedOn>invested on</InvestedOn>
-
-        {/* Date picker */}
-        <DatePicker
-          value={investmentDate}
-          onChange={handleInitialInvestmentDateChanged}
-        />
+        </Row>
 
         <DaysAgo>
           <InputField
