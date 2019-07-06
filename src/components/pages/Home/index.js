@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from './components/Header';
-import LoadingBar from './components/LoadingBar';
+import LoadingBar from './components/LoadingBar/index';
 import InputField from './components/InputField';
 import ValueToday from './components/ValueToday';
 import DatePicker from './components/DatePicker/DatePicker';
