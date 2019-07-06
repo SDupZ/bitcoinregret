@@ -8,12 +8,12 @@ export const Layout = styled.div`
   min-width: 100%;
   background: #18232e;
   
-  grid-template-columns: 1fr minmax(${Math.floor(MOBILE * 2 / 3)}px, 5fr) minmax(${Math.floor(MOBILE / 3)}px, 1fr) 1fr;
+  grid-template-columns: 1fr minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) minmax(${Math.floor(MOBILE * 4 / 6)}px, 5fr) minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) 1fr;
   grid-template-rows: 120px 1fr 50px;
   grid-template-areas:
-    'leftEdge header header rightEdge'
-    'leftEdge content sidebar rightEdge'
-    'footer footer footer footer';
+    'leftEdge header header header rightEdge'
+    'leftEdge sidebar content rightSidebar rightEdge'
+    'footer footer footer footer footer';
 
   @media only screen and (max-width: ${MOBILE}px) {
     grid-template-columns: 1fr;
@@ -83,5 +83,20 @@ export const InvestmentValue = styled.span`
     position: absolute;
     transform: translate(-120%, -50%);
     font-size: 28px;
+  }
+`;
+
+export const DaysAgo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  > * {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;

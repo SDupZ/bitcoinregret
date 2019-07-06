@@ -19,6 +19,7 @@ import {
   InvestedOn,
   NowWorth,
   InvestmentValue,
+  DaysAgo,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -81,6 +82,14 @@ export default function Home() {
           onChange={handleInitialInvestmentDateChanged}
         />
 
+        <DaysAgo>
+          <InputField
+            value={daysAgoText}
+            onChange={handleDaysAgoChanged}
+          />
+          <div>days ago</div>
+        </DaysAgo>
+
         <NowWorth>is now worth:</NowWorth>
 
         {/* Value Today */}
@@ -93,15 +102,6 @@ export default function Home() {
 
       <SideBar>
         <SidebarHeader>Options</SidebarHeader>
-
-        {/* Number of days ago */}
-        <SidebarItem>
-          <SidebarLabel>Number of days ago</SidebarLabel>
-          <InputField
-            value={daysAgoText}
-            onChange={handleDaysAgoChanged}
-          />
-        </SidebarItem>
 
         {/* End date */}
         <SidebarItem>
