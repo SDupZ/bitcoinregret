@@ -65,6 +65,10 @@ export const InvestmentValue = styled.div`
   position: relative;
   width: 100%;
 
+  > div > input {
+    padding: 8px 8px 8px 28px
+  }
+
   @media only screen and (max-width: ${MOBILE}px) {
     display: block;
     margin: 20px 0;
@@ -73,7 +77,7 @@ export const InvestmentValue = styled.div`
   &:after {
     content: "$";
     top: 50%;
-    left: 0;
+    left: 26px;
     position: absolute;
     transform: translate(-120%, -50%);
     font-size: 28px;

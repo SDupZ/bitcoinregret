@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MOBILE from 'components/breakpoints';
-import largeNumbers from './largeNumbers.json';
+import largeNumbers from './largeNumbers';
 
 const Wrapper = styled.div`
   color: white;
@@ -62,14 +62,21 @@ export default function ValueToday(props) {
     return parts.join(".");
   }
 
+  const getNumberOfDigits = (number) => Math.log(number) * Math.LOG10E + 1 | 0;
+
   const formatAmountToday = (x) => {
-    const numberOfDigits = new Number(x).toFixed(0).toString().length;
+    const numberOfDigits = getNumberOfDigits(x);
 
     if (numberOfDigits > 6) {
       // E.g. 1.2 million
-      const wordRepresentation = largeNumbers[numberOfDigits - 1];
+      const triplet = numberOfDigits - (numberOfDigits % 3);
+      const wordRepresentation = largeNumbers[triplet];
       const numberRepresentation = Number(x / Math.pow(10, numberOfDigits - 1)).toFixed(2);
 
+      if (!wordRepresentation) {
+        // Fallback to scientific notation
+        return Number(Number(x).toPrecision(4)).toFixed(0);
+      }
       return `${numberRepresentation} ${wordRepresentation.toString().toLowerCase()}`
     }
 
