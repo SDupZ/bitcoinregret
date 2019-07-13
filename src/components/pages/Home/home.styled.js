@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MOBILE from 'components/breakpoints';
-import { spacingBase, spacingSm, spacingXXL } from 'components/spacing';
+import { spacingBase, spacingLg, spacingSm, spacingXXL } from 'components/spacing';
 
 export const Layout = styled.div`
   display: grid;
@@ -94,7 +94,7 @@ export const DateRow = styled.div`
   justify-content: center;
   color: white;
 
-  margin-top: ${spacingBase};
+  margin-top: ${spacingLg};
   margin-bottom: ${spacingXXL};
 
   & > * {
