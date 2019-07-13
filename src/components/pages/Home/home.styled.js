@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import MOBILE from 'components/breakpoints';
-import { spacingBase, spacingMd } from 'components/spacing';
+import { spacingBase, spacingSm, spacingXXL } from 'components/spacing';
 
 export const Layout = styled.div`
   display: grid;
@@ -8,13 +8,13 @@ export const Layout = styled.div`
   min-width: 100%;
   background: #18232e;
   
-  grid-template-columns: 1fr minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) minmax(${Math.floor(MOBILE * 4 / 6)}px, 5fr) minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0px, 3fr) minmax(${Math.floor(MOBILE * 4 / 6)}px, 5fr) minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) minmax(0, 1fr);
   grid-template-rows: 120px 1fr 50px;
   grid-template-areas:
     'leftEdge header header header rightEdge'
-    'leftEdge sidebar content rightSidebar rightEdge'
+    'leftEdge leftSidebar content sidebar rightEdge'
     'footer footer footer footer footer';
-
+  grid-column-gap: 20px;
   @media only screen and (max-width: ${MOBILE}px) {
     grid-template-columns: 1fr;
     grid-template-rows: 90px 1fr 1fr 40px;
@@ -32,6 +32,7 @@ export const Content = styled.div`
 
   @media only screen and (max-width: ${MOBILE}px) {
     padding: 0 20px;
+    overflow: hidden;
   }
 `;
 
@@ -51,31 +52,18 @@ export const SidebarItem = styled.div`
   margin-bottom: ${spacingBase};
 `;
 
-export const SidebarLabel = styled.div`
-  margin-bottom: ${spacingMd};
-`;
-
-export const InvestedOn = styled.span`
-  margin: 0 30px;
+export const Label = styled.div`
+  margin-bottom: ${spacingSm};
   color: white;
 `;
 
-export const NowWorth = styled.div`
-  margin: 40px 0;
-  color: white;
-`;
-
-export const InvestmentValue = styled.span`
-  display: inline-block;
+export const InvestmentValue = styled.div`
   position: relative;
+  width: 100%;
 
   @media only screen and (max-width: ${MOBILE}px) {
     display: block;
     margin: 20px 0;
-
-    > div {
-      width: 100%;
-    }
   }
 
   &:after {
@@ -89,20 +77,29 @@ export const InvestmentValue = styled.span`
   }
 `;
 
-export const DaysAgo = styled.div`
+export const VerticalStack = styled.span`
   display: flex;
+  flex-direction: column;
+
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+`;
+
+export const DateRow = styled.div`
+  display: flex;
   color: white;
 
-  > * {
-    margin-right: 20px;
+  margin-top: ${spacingBase};
+  margin-bottom: ${spacingXXL};
+
+  & > * {
+    margin-right: 54px;
 
     &:last-child {
       margin-right: 0;
     }
   }
+
 `;
 
 export const Row = styled.div`

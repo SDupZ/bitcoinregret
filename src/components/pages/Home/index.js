@@ -15,12 +15,11 @@ import {
   SideBar,
   SidebarHeader,
   SidebarItem,
-  SidebarLabel,
-  InvestedOn,
-  NowWorth,
+  Label,
   InvestmentValue,
-  DaysAgo,
+  VerticalStack,
   Row,
+  DateRow,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -70,30 +69,39 @@ export default function Home() {
         <Row>
           {/* Investment Value */}
           <InvestmentValue>
+            <Label>Amount Invested</Label>
             <InputField
+              focus
               value={`${initialInvestmentText}`}
               onChange={(value) => setInitialInvestmentText(value)}
             />
           </InvestmentValue>
-
-          <InvestedOn>invested on</InvestedOn>
-
-          {/* Date picker */}
-          <DatePicker
-            value={investmentDate}
-            onChange={handleInitialInvestmentDateChanged}
-          />
         </Row>
 
-        <DaysAgo>
-          <InputField
-            value={daysAgoText}
-            onChange={handleDaysAgoChanged}
-          />
-          <div>days ago</div>
-        </DaysAgo>
+        <Row>
+          <DateRow>
+            <VerticalStack>
+              <Label>invested on</Label>
+              <DatePicker
+                value={investmentDate}
+                onChange={handleInitialInvestmentDateChanged}
+              />
+            </VerticalStack>
 
-        <NowWorth>is now worth:</NowWorth>
+            <VerticalStack>
+              <Label>days ago</Label>
+              <InputField
+                value={daysAgoText}
+                onChange={handleDaysAgoChanged}
+              />
+            </VerticalStack>
+          </DateRow>
+        </Row>
+
+        <Row>
+          <Label>is now worth:</Label>
+        </Row>
+
 
         {/* Value Today */}
         {showResults && <ValueToday
@@ -108,7 +116,7 @@ export default function Home() {
 
         {/* End date */}
         <SidebarItem>
-          <SidebarLabel>End date</SidebarLabel>
+          <Label>End date</Label>
           <DatePicker
             value={investmentDate}
             onChange={() => {}}
