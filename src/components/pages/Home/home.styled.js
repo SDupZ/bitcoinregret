@@ -111,3 +111,11 @@ export const Row = styled.div`
     display: block;
   }
 `;
+
+export const NowWorth = styled.div`
+  margin-bottom: ${spacingXXL};
+`;
+
+export const DaysAgo = styled.div`
+  width: 120px;
+`;

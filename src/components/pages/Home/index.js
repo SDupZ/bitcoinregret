@@ -20,6 +20,8 @@ import {
   VerticalStack,
   Row,
   DateRow,
+  NowWorth,
+  DaysAgo,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -89,17 +91,21 @@ export default function Home() {
             </VerticalStack>
 
             <VerticalStack>
-              <Label>days ago</Label>
-              <InputField
-                value={daysAgoText}
-                onChange={handleDaysAgoChanged}
-              />
+              <DaysAgo>
+                <Label>days ago</Label>
+                <InputField
+                  value={daysAgoText}
+                  onChange={handleDaysAgoChanged}
+                />
+              </DaysAgo>
             </VerticalStack>
           </DateRow>
         </Row>
 
         <Row>
-          <Label>is now worth:</Label>
+          <NowWorth>
+            <Label>is now worth:</Label>
+          </NowWorth>
         </Row>
 
 

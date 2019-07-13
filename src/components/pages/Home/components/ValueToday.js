@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MOBILE from 'components/breakpoints';
+import largeNumbers from './largeNumbers.json';
 
 const Wrapper = styled.div`
   color: white;
@@ -56,10 +57,22 @@ export default function ValueToday(props) {
   const { amountToday, percentageIncrease, amountTodayInCrypto} = props;
 
   const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
   }
 
   const formatAmountToday = (x) => {
+    const numberOfDigits = new Number(x).toFixed(0).toString().length;
+
+    if (numberOfDigits > 6) {
+      // E.g. 1.2 million
+      const wordRepresentation = largeNumbers[numberOfDigits - 1];
+      const numberRepresentation = Number(x / Math.pow(10, numberOfDigits - 1)).toFixed(2);
+
+      return `${numberRepresentation} ${wordRepresentation.toString().toLowerCase()}`
+    }
+
     const formatted = Number(Number(x).toPrecision(4)).toFixed(0);
     return numberWithCommas(formatted);
   }
@@ -72,7 +85,7 @@ export default function ValueToday(props) {
   return (
     <Wrapper>
       <AmountWrapper>
-        <CurrencyQuantity>{formatDecimals(amountTodayInCrypto, 0)} BTC=</CurrencyQuantity>
+        <CurrencyQuantity>{formatDecimals(amountTodayInCrypto, 4)} BTC=</CurrencyQuantity>
         <AmountToday>${formatAmountToday(amountToday)}</AmountToday>
         <Currency>USD</Currency>
       </AmountWrapper>
