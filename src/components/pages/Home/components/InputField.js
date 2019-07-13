@@ -62,7 +62,7 @@ export default function InputField(props) {
   return (
     <Wrapper>
       <Input
-        type="text"
+        type="number"
         onChange={handleOnChange}
         value={value}
         maxLength={maxLength}
