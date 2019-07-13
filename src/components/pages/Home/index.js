@@ -118,7 +118,7 @@ export default function Home() {
 
       <SideBar>
         <SidebarItem>
-          <Label>End date</Label>
+          <Label>Date sold</Label>
           <Caption>Defaults to today</Caption>
           <DatePicker
             value={investmentDate}
