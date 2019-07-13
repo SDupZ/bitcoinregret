@@ -91,6 +91,7 @@ export const VerticalStack = styled.span`
 
 export const DateRow = styled.div`
   display: flex;
+  justify-content: center;
   color: white;
 
   margin-top: ${spacingBase};
