@@ -13,7 +13,6 @@ import {
   Layout,
   Content,
   SideBar,
-  SidebarHeader,
   SidebarItem,
   Label,
   InvestmentValue,
@@ -22,6 +21,7 @@ import {
   DateRow,
   NowWorth,
   DaysAgo,
+  Caption,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -71,7 +71,6 @@ export default function Home() {
         <Row>
           {/* Investment Value */}
           <InvestmentValue>
-            <Label>Amount Invested</Label>
             <InputField
               focus
               value={`${initialInvestmentText}`}
@@ -118,11 +117,9 @@ export default function Home() {
       </Content>
 
       <SideBar>
-        <SidebarHeader>Options</SidebarHeader>
-
-        {/* End date */}
         <SidebarItem>
           <Label>End date</Label>
+          <Caption>Defaults to today</Caption>
           <DatePicker
             value={investmentDate}
             onChange={() => {}}

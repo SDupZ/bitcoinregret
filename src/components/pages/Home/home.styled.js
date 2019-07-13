@@ -8,12 +8,12 @@ export const Layout = styled.div`
   min-width: 100%;
   background: #18232e;
   
-  grid-template-columns: minmax(0, 1fr) minmax(0px, 3fr) minmax(${Math.floor(MOBILE * 4 / 6)}px, 5fr) minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(${Math.floor(MOBILE * 4 / 6)}px, 10fr) minmax(${Math.floor(MOBILE * 1 / 6)}px, 3fr) minmax(0, 1fr);
   grid-template-rows: 120px 1fr 50px;
   grid-template-areas:
-    'leftEdge header header header rightEdge'
-    'leftEdge leftSidebar content sidebar rightEdge'
-    'footer footer footer footer footer';
+    'leftEdge header header rightEdge'
+    'leftEdge content sidebar rightEdge'
+    'footer footer footer footer';
   grid-column-gap: 20px;
   @media only screen and (max-width: ${MOBILE}px) {
     grid-template-columns: 1fr;
@@ -38,14 +38,11 @@ export const Content = styled.div`
 
 export const SideBar = styled.div`
   grid-area: sidebar;
+  margin-left: 20px;
 
   @media only screen and (max-width: ${MOBILE}px) {
     display: none;
   }
-`;
-
-export const SidebarHeader = styled.div`
-  margin-bottom: ${spacingBase};
 `;
 
 export const SidebarItem = styled.div`
@@ -55,6 +52,13 @@ export const SidebarItem = styled.div`
 export const Label = styled.div`
   margin-bottom: ${spacingSm};
   color: white;
+`;
+
+export const Caption = styled.div`
+  font-size: 12px;
+  color: white;
+  font-weight: 300;
+  margin-bottom: ${spacingSm};
 `;
 
 export const InvestmentValue = styled.div`

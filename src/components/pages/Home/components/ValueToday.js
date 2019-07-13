@@ -13,7 +13,7 @@ const AmountWrapper = styled.div`
 `;
 
 const AmountToday = styled.span`
-  font-size: 6vw;
+  font-size: 90px;
 
   @media only screen and (max-width: ${MOBILE}px) {
     font-size: 42px;

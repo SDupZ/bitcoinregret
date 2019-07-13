@@ -21,6 +21,7 @@ const Input = styled.input`
   font-size: 32px;
   text-align: center;
   width: 100%;
+  font-weight: 300;
 
   ${props => props.hasErrors && css`
     color: red;

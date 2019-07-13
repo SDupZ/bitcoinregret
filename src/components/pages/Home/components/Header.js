@@ -17,6 +17,7 @@ const Wrapper = styled.header`
 const Title = styled.h2`
   display: inline-block;
   margin: 0;
+  font-size: 26px;
 `;
 
 export default function Header() {
