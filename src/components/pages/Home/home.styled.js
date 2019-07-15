@@ -128,3 +128,12 @@ export const NowWorth = styled.div`
 export const DaysAgo = styled.div`
   width: 120px;
 `;
+
+export const ReferralLink = styled.a`
+  width: 100%;
+`;
+
+export const ReferralImage = styled.img`
+  width: 100%
+  max-width: 200px;
+`;

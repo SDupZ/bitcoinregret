@@ -9,6 +9,9 @@ import DatePicker from './components/DatePicker/DatePicker';
 import useCalculateReturns from './useCalculateReturns';
 import calculateDaysBetweenTwoDates from './utils';
 
+import binanceLogo from './binance.png';
+import binanceQRCode from './qrcode.png';
+
 import {
   Layout,
   Content,
@@ -22,6 +25,8 @@ import {
   NowWorth,
   DaysAgo,
   Caption,
+  ReferralLink,
+  ReferralImage,
 } from './home.styled';
 
 const INITIAL_INVESTMENT_VALUE = 1000;
@@ -118,12 +123,20 @@ export default function Home() {
 
       <SideBar>
         <SidebarItem>
-          <Label>Date sold</Label>
+          <Label>Want to start trading?</Label>
+          <Caption>We only recommend platforms we trust with our own&nbsp;funds</Caption>
+          <ReferralLink href="https://www.binance.com/?ref=11873092">
+            <ReferralImage src={binanceLogo} alt="Binance Logo" />
+            <ReferralImage src={binanceQRCode} alt="Binance QR code" />
+            </ReferralLink>
+        </SidebarItem>
+        <SidebarItem>
+          {/* <Label>Date sold</Label>
           <Caption>Defaults to today</Caption>
           <DatePicker
             value={investmentDate}
             onChange={() => {}}
-          />
+          /> */}
         </SidebarItem>
       </SideBar>
     </Layout>
