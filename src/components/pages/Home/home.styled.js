@@ -31,7 +31,7 @@ export const Content = styled.div`
   text-align: center;
 
   @media only screen and (max-width: ${MOBILE}px) {
-    padding: 0 20px;
+    margin: 20px;
     overflow: hidden;
   }
 `;
@@ -41,7 +41,8 @@ export const SideBar = styled.div`
   margin-left: 20px;
 
   @media only screen and (max-width: ${MOBILE}px) {
-    display: none;
+    margin: 20px;
+    overflow: hidden;
   }
 `;
 
@@ -132,8 +133,10 @@ export const DaysAgo = styled.div`
 export const ReferralLink = styled.a`
   width: 100%;
 `;
-
-export const ReferralImage = styled.img`
+  
+  export const ReferralImage = styled.img`
+  display: block;
   width: 100%
   max-width: 200px;
+  margin: 8px 0;
 `;
