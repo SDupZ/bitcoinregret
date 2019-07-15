@@ -1,5 +1,7 @@
 import React from 'react';
 
+import useIsMobile from 'hooks/useIsMobile';
+
 import Header from './components/Header';
 import LoadingBar from './components/LoadingBar/index';
 import InputField from './components/InputField';
@@ -40,6 +42,7 @@ export default function Home() {
     INITIAL_INVESTMENT_DATE
   );
   const [daysAgoText, setDaysAgoText] = React.useState('0');
+  const isMobile = useIsMobile();
 
   const initialInvestmentValue = Number(initialInvestmentText);
 
@@ -67,6 +70,8 @@ export default function Home() {
     }
     setDaysAgoText(value);
   }
+
+  const referralLink = isMobile ? 'https://www.binance.com/m-HomePage.html?ref=11873092' : 'https://www.binance.com/?ref=11873092';
 
   return (
     <Layout>
@@ -125,7 +130,7 @@ export default function Home() {
         <SidebarItem>
           <Label>Want to start trading?</Label>
           <Caption>We only recommend platforms we trust with our own&nbsp;funds</Caption>
-          <ReferralLink href="https://www.binance.com/?ref=11873092">
+          <ReferralLink href={referralLink}>
             <ReferralImage src={binanceLogo} alt="Binance Logo" />
             <ReferralImage src={binanceQRCode} alt="Binance QR code" />
             </ReferralLink>
