@@ -1,18 +1,17 @@
-require('dotenv').config();
-const { APP_ENV } = process.env;
+const { hostname } = window.location;
 
 let api;
 
-switch (APP_ENV) {
-  case 'prod':
+switch (hostname) {
+  case 'localhost':
+      api = 'http://localhost:3005';
+      break;
+  case 'www.bitcoinregret.net':
+  case 'bitcoinregret.net':
+  default:
     api = 'https://bitcoinregret-api.herokuapp.com'
     break;
-  case 'dev':
-  default:
-    api = 'http://localhost:3005'
-    break;
 }
-
 
 module.exports = {
   api,
