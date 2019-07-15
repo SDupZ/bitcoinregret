@@ -5,7 +5,7 @@ let api;
 
 switch (APP_ENV) {
   case 'prod':
-    api = 'todo'
+    api = 'https://bitcoinregret-api.herokuapp.com'
     break;
   case 'dev':
   default:
