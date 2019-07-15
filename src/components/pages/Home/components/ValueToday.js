@@ -62,16 +62,17 @@ export default function ValueToday(props) {
     return parts.join(".");
   }
 
-  const getNumberOfDigits = (number) => Math.log(number) * Math.LOG10E + 1 | 0;
+  const getNumberOfDigits = (number) => number.toString().split('.')[0].length
 
   const formatAmountToday = (x) => {
     const numberOfDigits = getNumberOfDigits(x);
+    const numberOfZeroes = numberOfDigits - 1;
 
-    if (numberOfDigits > 6) {
+    if (numberOfZeroes >= 6) {
       // E.g. 1.2 million
-      const triplet = numberOfDigits - (numberOfDigits % 3);
+      const triplet = numberOfZeroes - ((numberOfZeroes) % 3);
       const wordRepresentation = largeNumbers[triplet];
-      const numberRepresentation = Number(x / Math.pow(10, numberOfDigits - 1)).toFixed(2);
+      const numberRepresentation = Number(x / Math.pow(10, triplet)).toFixed(2);
 
       if (!wordRepresentation) {
         // Fallback to scientific notation

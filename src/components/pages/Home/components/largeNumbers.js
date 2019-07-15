@@ -1,9 +1,8 @@
 const largeNumbers = {
-  1: "One",
-  2: "Ten",
-  3: "Hundred",
-  4: "Thousand",
-  5: "Ten Thousand",
+  0: "One",
+  1: "Ten",
+  2: "Hundred",
+  3: "Thousand",
   6: "Million",
   9: "Billion",
   12: "Trillion",
