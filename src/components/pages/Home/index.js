@@ -128,12 +128,12 @@ export default function Home() {
 
       <SideBar>
         <SidebarItem>
-          <Label>Want to start trading?</Label>
+          {/* <Label>Want to start trading?</Label>
           <Caption>We only recommend platforms we trust with our own&nbsp;funds</Caption>
           <ReferralLink data-ga-label="binance-cta" href={referralLink} target="_blank">
             <ReferralImage src={binanceLogo} alt="Binance Logo" />
             <ReferralImage src={binanceQRCode} alt="Binance QR code" />
-            </ReferralLink>
+            </ReferralLink> */}
         </SidebarItem>
         <SidebarItem>
           {/* <Label>Date sold</Label>
