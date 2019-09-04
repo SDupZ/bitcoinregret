@@ -14,6 +14,8 @@ import calculateDaysBetweenTwoDates from './utils';
 import binanceLogo from './binance.png';
 import binanceQRCode from './qrcode.png';
 
+import * as Styled from './home.styled';
+
 import {
   Layout,
   Content,
@@ -125,6 +127,11 @@ export default function Home() {
           percentageIncrease={percentageDifference}
         />}
       </Content>
+
+      <Styled.Footer>
+        <div>bitcoinregret.net - {(new Date()).getFullYear()}</div>
+        <Styled.Link light={false} to="/privacy-policy">Privacy Policy</Styled.Link>
+      </Styled.Footer>
 
       <SideBar>
         <SidebarItem>

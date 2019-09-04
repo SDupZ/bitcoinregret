@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import MOBILE from 'components/breakpoints';
+import { Link } from 'react-router-dom';
 
 import { Caption } from '../home.styled';
 
@@ -10,7 +11,7 @@ const Wrapper = styled.header`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  color: white;
+  color: ${props => props.light ? '#22242B' : 'white'};
   text-align: center;
   @media only screen and (max-width: ${MOBILE}px) {
     align-items: center;
@@ -23,11 +24,20 @@ const Title = styled.h2`
   font-size: 26px;
 `;
 
-export default function Header() {
+const StyledLink = styled(Link)`
+  text-align: left;
+  color: ${props => props.light ? '#22242B' : 'white'};
+  text-decoration: none;
+`;
+
+export default function Header(props) {
+  const { light } = props;
   return (
-    <Wrapper>
-      <Title>Bitcoin Regret</Title>
-      <Caption>FOMO and ROI calculator for Bitcoin</Caption>
+    <Wrapper light={light}>
+      <StyledLink light={light} to="/">
+        <Title>Bitcoin Regret</Title>
+        <Caption light={light}>FOMO and ROI calculator for Bitcoin</Caption>
+      </StyledLink>
     </Wrapper>
   );
 }

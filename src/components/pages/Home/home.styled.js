@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import MOBILE from 'components/breakpoints';
 import { spacingBase, spacingLg, spacingSm, spacingXXL } from 'components/spacing';
+import { Link as RouterLink } from 'react-router-dom';
 
 export const Layout = styled.div`
   display: grid;
@@ -13,7 +14,7 @@ export const Layout = styled.div`
   grid-template-areas:
     'leftEdge header header rightEdge'
     'leftEdge content sidebar rightEdge'
-    'footer footer footer footer';
+    'leftEdge footer footer rightEdge';
   grid-column-gap: 20px;
   @media only screen and (max-width: ${MOBILE}px) {
     grid-template-columns: 1fr;
@@ -57,7 +58,7 @@ export const Label = styled.div`
 
 export const Caption = styled.div`
   font-size: 12px;
-  color: white;
+  color: ${props => props.light ? '#22242B' : 'white'};
   font-weight: 300;
   margin-bottom: ${spacingSm};
 `;
@@ -134,9 +135,31 @@ export const ReferralLink = styled.a`
   width: 100%;
 `;
   
-  export const ReferralImage = styled.img`
+export const ReferralImage = styled.img`
   display: block;
   width: 100%
   max-width: 200px;
   margin: 8px 0;
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  grid-area: footer;
+  color: white;
+  font-weight: 300;
+  > * + * {
+    margin-left: 20px;
+    margin-bottom: 30px
+  }
+`;
+
+export const PrivacyPolicy = styled.a`
+  color: white;
+  font-weight: 300;
+`;
+
+export const Link = styled(RouterLink)`
+  text-align: left;
+  color: ${props => props.light ? '#22242B' : 'white'};
+  text-decoration: none;
 `;
